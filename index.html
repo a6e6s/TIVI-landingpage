@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" dir="rtl" lang="ar">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>معهد الرؤية للتدريب - المستقبل يبدأ هنا</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#92ccff",
+                        "surface-dim": "#d7dadc",
+                        "primary": "#003b5a",
+                        "inverse-on-surface": "#eef1f3",
+                        "on-tertiary-container": "#81c6ff",
+                        "secondary-container": "#ffc641",
+                        "on-background": "#181c1e",
+                        "on-surface": "#181c1e",
+                        "inverse-surface": "#2d3133",
+                        "surface": "#f7fafc",
+                        "surface-container": "#ebeef0",
+                        "on-secondary-fixed-variant": "#5c4300",
+                        "on-primary-fixed": "#001e30",
+                        "surface-container-high": "#e5e9eb",
+                        "background": "#f7fafc",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "outline-variant": "#c1c7cf",
+                        "on-secondary-container": "#715300",
+                        "on-primary-fixed-variant": "#0e4b6e",
+                        "secondary-fixed": "#ffdfa0",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#2f6388",
+                        "on-surface-variant": "#41474e",
+                        "outline": "#72787f",
+                        "primary-fixed-dim": "#9bccf6",
+                        "tertiary-container": "#00527e",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#94c5ee",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#004b73",
+                        "on-error": "#ffffff",
+                        "primary-container": "#1a5276",
+                        "on-tertiary-fixed": "#001d31",
+                        "inverse-primary": "#9bccf6",
+                        "secondary-fixed-dim": "#f6be39",
+                        "surface-bright": "#f7fafc",
+                        "surface-container-low": "#f1f4f6",
+                        "tertiary": "#003a5b",
+                        "on-secondary-fixed": "#261a00",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "secondary": "#795900",
+                        "tertiary-fixed": "#cce5ff",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#cbe6ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Plus Jakarta Sans"]
+                    }
+                },
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glass-header {
+            backdrop-filter: blur(20px);
+            background-color: rgba(247, 250, 252, 0.7);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #003b5a 0%, #1a5276 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Manrope', sans-serif;
+        }
+    </style>
+    <style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+
+<body class="bg-surface text-on-surface">
+    <!-- TopAppBar -->
+    <header class="sticky top-0 w-full z-50 glass-header shadow-sm">
+        <nav class="rtl flex flex-row-reverse justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl font-black text-sky-950 font-headline tracking-tight">
+                    <img src="logo.png" alt="logo" class="h-12">
+                </span>
+            </div>
+            <div class="hidden md:flex items-center gap-8 font-body text-slate-600">
+                <a class="text-amber-600 dark:text-amber-500 border-b-2 border-amber-600 px-1 py-1 font-semibold"
+                    href="#">الرئيسية</a>
+                <a class="text-slate-600 hover:text-amber-600 transition-colors" href="#programs">البرامج</a>
+                <a class="text-slate-600 hover:text-amber-600 transition-colors" href="#why-us">لماذا نحن</a>
+                <a class="text-slate-600 hover:text-amber-600 transition-colors" href="#stories">قصص النجاح</a>
+            </div>
+            <div class="flex items-center">
+                <a class="bg-primary hover:bg-primary-container text-white px-6 py-2.5 rounded-xl font-bold transition-all active:scale-95 duration-200"
+                    href="#register">
+                    تسجيل
+                </a>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-gradient relative overflow-hidden min-h-[751px] flex items-center">
+            <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10 py-20">
+                <div class="text-right space-y-8">
+                    <div
+                        class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-secondary-fixed">
+                        <span class="material-symbols-outlined text-sm" data-icon="auto_awesome">auto_awesome</span>
+                        <span class="text-sm font-label uppercase tracking-wider">نحو مستقبل مهني واعد</span>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-[1.1] tracking-tight">
+                        استثمر في رؤيتك، <br /> <span class="text-secondary-container">اصنع مستقبلك</span>
+                    </h1>
+                    <p class="text-primary-fixed text-lg md:text-xl max-w-xl leading-relaxed opacity-90">
+                        معهد الرؤية للتدريب يقدم برامج معتمدة عالمياً لتطوير مهاراتك القيادية والتقنية، لنكون جسرك
+                        الحقيقي نحو
+                        التميز المهني في سوق العمل السعودي.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a class="bg-secondary-container hover:bg-amber-400 text-on-secondary-container px-8 py-4 rounded-xl font-extrabold text-lg transition-transform hover:-translate-y-1"
+                            href="#register">
+                            سجل الآن
+                        </a>
+                        <a class="border border-white/30 hover:bg-white/10 text-white px-8 py-4 rounded-xl font-bold text-lg backdrop-blur-sm transition-colors"
+                            href="#programs">
+                            استعرض البرامج
+                        </a>
+                    </div>
+                </div>
+                <div class="relative flex justify-center items-center">
+                    <div class="absolute inset-0 bg-secondary/20 blur-[120px] rounded-full"></div>
+                    <img alt="Hero image showing students"
+                        class="relative z-10 rounded-3xl shadow-2xl border-4 border-white/10 transform rotate-2 hover:rotate-0 transition-transform duration-500"
+                        data-alt="high-quality cinematic portrait of diverse professional students collaborating in a modern high-tech classroom with soft natural lighting and depth of field"
+                        src="aaa.jpeg" />
+                </div>
+            </div>
+            <!-- Decorative Background Element -->
+            <div class="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-surface to-transparent"></div>
+        </section>
+        <!-- Fun Facts / Stats -->
+        <section class="relative z-20 -mt-12 px-6">
+            <div
+                class="max-w-6xl mx-auto bg-surface-container-lowest shadow-xl rounded-[2rem] p-8 md:p-12 grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center space-y-2">
+                    <p class="text-primary text-4xl font-black font-headline tracking-tighter">+15,000</p>
+                    <p class="text-on-surface-variant font-label text-sm uppercase">خريج متميز</p>
+                </div>
+                <div class="text-center space-y-2">
+                    <p class="text-primary text-4xl font-black font-headline tracking-tighter">98%</p>
+                    <p class="text-on-surface-variant font-label text-sm uppercase">نسبة التوظيف</p>
+                </div>
+                <div class="text-center space-y-2">
+                    <p class="text-primary text-4xl font-black font-headline tracking-tighter">+120</p>
+                    <p class="text-on-surface-variant font-label text-sm uppercase">برنامج تدريبي</p>
+                </div>
+                <div class="text-center space-y-2">
+                    <p class="text-primary text-4xl font-black font-headline tracking-tighter">+50</p>
+                    <p class="text-on-surface-variant font-label text-sm uppercase">شريك استراتيجي</p>
+                </div>
+            </div>
+        </section>
+        <!-- Featured Programs -->
+        <section class="py-24 px-6 bg-surface" id="programs">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div class="space-y-4 max-w-2xl text-right">
+                        <h2 class="text-4xl md:text-5xl font-black text-primary">البرامج التدريبية المختارة</h2>
+                        <p class="text-on-surface-variant text-lg">نقدم نخبة من البرامج النوعية المصممة بعناية لتلبية
+                            متطلبات رؤية
+                            المملكة 2030.</p>
+                    </div>
+                    <a class="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all" href="#">
+                        <span>عرض كافة البرامج</span>
+                        <span class="material-symbols-outlined rtl:rotate-180"
+                            data-icon="arrow_forward">arrow_forward</span>
+                    </a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Course Card 1 -->
+                    <div
+                        class="bg-surface-container-low rounded-[2.5rem] overflow-hidden group hover:shadow-2xl transition-shadow duration-500">
+                        <div class="h-64 relative overflow-hidden">
+                            <img alt="Cybersecurity program"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="modern close-up of a laptop displaying complex coding and security data in a dimly lit high-tech environment with blue lighting"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdhpPhvvvInHIS6xzsAZ5qisbMfjMtBr0g6OJCfnB7bqkwn90gI6tf0V7LomTCVelOs4w5VotPwFuvjPTSfy-Ku9IkgeYA9oPdbi1eW7MElk3fh-JQfuwA8-voBp6vImkxlsY55sgc0WYbxAA0kwuYcWrONPlSPA8qz3Bl6Q3VBWdXX4kJcKNpEmFJ94RA2OtFbwI7o4qlihV3TQWFVrvhdE25u8EWox3wYUjfGPpTMAq5rtEIpZtrRrTlrFc7WISvoy4wheVQKV8" />
+                            <div class="absolute top-6 right-6">
+                                <span class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-full">برنامج
+                                    معتمد</span>
+                            </div>
+                        </div>
+                        <div class="p-8 space-y-4">
+                            <h3 class="text-2xl font-bold text-primary">الأمن السيبراني المتقدم</h3>
+                            <p class="text-on-surface-variant leading-relaxed">برنامج شامل يغطي حماية الشبكات، كشف
+                                التسلل، والاستجابة
+                                للحوادث الرقمية بمعايير عالمية.</p>
+                            <div class="pt-4 flex justify-between items-center border-t border-outline-variant/30">
+                                <span class="text-secondary font-bold">12 أسبوع</span>
+                                <button
+                                    class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary-container transition-colors">
+                                    <span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Course Card 2 -->
+                    <div
+                        class="bg-surface-container-low rounded-[2.5rem] overflow-hidden group hover:shadow-2xl transition-shadow duration-500">
+                        <div class="h-64 relative overflow-hidden">
+                            <img alt="Management program"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="professional business group meeting in a bright minimalist glass boardroom with city skyline background and professional atmosphere"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdWKMeqXeXpdWrQV9iB3-dFnYeqEhL49EXVdq7yX11wJ_mblIYx3XHlzJ8LXFK432Rc0zZUa_qGi3FdzRsdtmcz4OamO2K6NnpnflXlt3PjxSQBmI3L8xeBS0MOyIwpatNYb9PPqfHIwWlRR2aF_crQnDW-CR03G2QayiN3pQLdRKtpcz9RLz16m0rUU59PIhmVioqogyBE_5oosAVmk38WUpqaevL4BpA0DeGBzn0b14GDn29GuHDAU_nudxtzHTfoZPUBML1zrI" />
+                            <div class="absolute top-6 right-6">
+                                <span
+                                    class="bg-secondary-container text-on-secondary-container text-xs font-bold px-4 py-2 rounded-full">الأكثر
+                                    طلباً</span>
+                            </div>
+                        </div>
+                        <div class="p-8 space-y-4">
+                            <h3 class="text-2xl font-bold text-primary">إدارة المشاريع الإحترافية</h3>
+                            <p class="text-on-surface-variant leading-relaxed">إتقان منهجيات PMP و Agile لقيادة الفرق
+                                بنجاح وتحقيق
+                                الأهداف الاستراتيجية للمنظمات.</p>
+                            <div class="pt-4 flex justify-between items-center border-t border-outline-variant/30">
+                                <span class="text-secondary font-bold">8 أسابيع</span>
+                                <button
+                                    class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary-container transition-colors">
+                                    <span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Course Card 3 -->
+                    <div
+                        class="bg-surface-container-low rounded-[2.5rem] overflow-hidden group hover:shadow-2xl transition-shadow duration-500">
+                        <div class="h-64 relative overflow-hidden">
+                            <img alt="Data science program"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                data-alt="stylized 3D visualization of glowing network data connections and abstract digital architecture in shades of deep blue and gold"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT7HAgpPdraM2Os81bbzdj4McLYZrIGOyk6cHodqfV4vEt5Arkx0cLGz3Q3gOiiaWLv9ojHSevl-LOQh00bU6YMdeolliVCwiU0yjqdYnqIUWngsqGlSNp9Vrr5mTj8CQ-wn7n3yuEgHPkbSxHc-J3a3dhHz5yDmQ5nTugJOmLx8n2H9eqSzinCE5p2u7HnuxOEyfSaVqboZAZ8jU4MenoEDlhwQ6CPJV60dMfRiXD_cVzBZy10uzD_Y3ozlGhXwec4cdHXDn6jI4" />
+                            <div class="absolute top-6 right-6">
+                                <span class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-full">جديد</span>
+                            </div>
+                        </div>
+                        <div class="p-8 space-y-4">
+                            <h3 class="text-2xl font-bold text-primary">تحليل البيانات والذكاء الاصطناعي</h3>
+                            <p class="text-on-surface-variant leading-relaxed">تعلم تحويل البيانات إلى رؤى قيمة باستخدام
+                                أحدث أدوات
+                                التحليل وتقنيات التعلم الآلي.</p>
+                            <div class="pt-4 flex justify-between items-center border-t border-outline-variant/30">
+                                <span class="text-secondary font-bold">14 أسبوع</span>
+                                <button
+                                    class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary-container transition-colors">
+                                    <span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Why Us - Bento Grid Style -->
+        <section class="py-24 px-6 bg-surface-container-low" id="why-us">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-16 space-y-4">
+                    <h2 class="text-4xl md:text-5xl font-black text-primary">لماذا تختار معهد الرؤية؟</h2>
+                    <p class="text-on-surface-variant max-w-2xl mx-auto">نحن لا نقدم مجرد دورات، بل نصنع تجربة تعليمية
+                        متكاملة
+                        تهدف للتحول الحقيقي.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
+                    <div
+                        class="md:col-span-2 md:row-span-2 bg-primary rounded-[2rem] p-10 text-white flex flex-col justify-end relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-8">
+                            <span
+                                class="material-symbols-outlined text-6xl text-secondary opacity-50 group-hover:opacity-100 transition-opacity"
+                                data-icon="workspace_premium">workspace_premium</span>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4 relative z-10">اعتماد محلي ودولي</h3>
+                        <p class="text-primary-fixed opacity-80 relative z-10 leading-relaxed">شهاداتنا معترف بها من قبل
+                            الجهات
+                            الحكومية الكبرى والشركات العالمية، مما يمنحك ميزة تنافسية فورية في سيرتك الذاتية.</p>
+                    </div>
+                    <div
+                        class="bg-white rounded-[2rem] p-8 flex flex-col justify-between group hover:bg-secondary transition-colors duration-500">
+                        <span class="material-symbols-outlined text-4xl text-secondary group-hover:text-white"
+                            data-icon="person_celebrate">person_celebrate</span>
+                        <div>
+                            <h4 class="font-bold text-xl mb-2 text-primary group-hover:text-white">خبراء ممارسون</h4>
+                            <p class="text-sm text-on-surface-variant group-hover:text-white/80">مدربونا هم قادة في
+                                مجالاتهم ينقلون لك
+                                خبرة السوق الواقعية.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white rounded-[2rem] p-8 flex flex-col justify-between group hover:bg-secondary transition-colors duration-500">
+                        <span class="material-symbols-outlined text-4xl text-secondary group-hover:text-white"
+                            data-icon="devices">devices</span>
+                        <div>
+                            <h4 class="font-bold text-xl mb-2 text-primary group-hover:text-white">تعليم مرن</h4>
+                            <p class="text-sm text-on-surface-variant group-hover:text-white/80">خيارات تدريب حضورية وعن
+                                بعد تناسب
+                                جدولك المهني.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="md:col-span-2 bg-surface-container-highest rounded-[2rem] p-8 flex items-center gap-6 overflow-hidden">
+                        <div class="flex-1 space-y-3">
+                            <h4 class="font-bold text-xl text-primary">بيئة تدريبية حديثة</h4>
+                            <p class="text-sm text-on-surface-variant">قاعات مجهزة بأحدث التقنيات لضمان أفضل تجربة
+                                تفاعلية.</p>
+                        </div>
+                        <img alt="Training lab"
+                            class="w-32 h-32 rounded-2xl object-cover grayscale group-hover:grayscale-0 transition-all"
+                            data-alt="ultra-modern minimalist computer lab with ergonomic white chairs and multiple sleek monitors in a brightly lit professional setting"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe1FX8yIWRX3cTNB-TPTvtcLy45dEl-hksXWYGch3V-hHOoDPA_p1Whp6nwE2TAvqzGwsa7KVq7y9XkTV8Szxp7X7Sa2nEPUIyOhwOfKv4sXbKH6NrZsvuwfq5uaC2GW4peJbV9y8wPq53B-MjYDZslajvTD08AX6FI4S2kRV9Rnbd1TCEA9gETsHE-bmM9UomrjTYbc_7Q9hfOU-Uz0HQf5HoGM0kk48ONdmy84xYv4lobBo9MLau5YBANFHWwiuhqBEVD3-4xOY" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Success Stories -->
+        <section class="py-24 px-6 bg-surface overflow-hidden" id="stories">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl font-black text-primary mb-16 text-center">قصص نجاح من قلب المعهد</h2>
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div
+                        class="flex-1 bg-surface-container-lowest border-r-4 border-secondary p-10 rounded-2xl shadow-sm italic relative">
+                        <span class="material-symbols-outlined absolute -top-4 -right-4 text-6xl text-secondary/20"
+                            data-icon="format_quote">format_quote</span>
+                        <p class="text-on-surface text-lg leading-relaxed mb-6">"بفضل برنامج إدارة المشاريع في معهد
+                            الرؤية، تمكنت من
+                            الحصول على ترقية استثنائية في شركتي. المنهج العملي كان مفتاح التحول في مساري المهني."</p>
+                        <div class="flex items-center gap-4 not-italic">
+                            <div class="w-12 h-12 rounded-full bg-slate-200"></div>
+                            <div>
+                                <p class="font-bold text-primary">م. أحمد القحطاني</p>
+                                <p class="text-sm text-on-surface-variant">مدير عمليات</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="flex-1 bg-surface-container-lowest border-r-4 border-secondary p-10 rounded-2xl shadow-sm italic relative">
+                        <span class="material-symbols-outlined absolute -top-4 -right-4 text-6xl text-secondary/20"
+                            data-icon="format_quote">format_quote</span>
+                        <p class="text-on-surface text-lg leading-relaxed mb-6">"التدريب لم يكن مجرد دروس نظرية، بل
+                            تجارب عملية غيرت
+                            طريقتي في التفكير التقني. اليوم أعمل كأخصائية أمن سيبراني في إحدى الجهات الحكومية."</p>
+                        <div class="flex items-center gap-4 not-italic">
+                            <div class="w-12 h-12 rounded-full bg-slate-200"></div>
+                            <div>
+                                <p class="font-bold text-primary">سارة الشمري</p>
+                                <p class="text-sm text-on-surface-variant">أخصائية أمن معلومات</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Registration Form Section -->
+        <section class="py-24 px-6 bg-primary relative overflow-hidden" id="register">
+            <!-- Decorative circle -->
+            <div class="absolute -top-24 -left-24 w-96 h-96 bg-secondary opacity-10 rounded-full blur-[100px]"></div>
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
+                <div class="text-right text-white space-y-6">
+                    <h2 class="text-4xl md:text-5xl font-black leading-tight">ابدأ رحلة التميز اليوم</h2>
+                    <p class="text-primary-fixed opacity-90 text-lg">سجل بياناتك الآن وسيتواصل معك مستشارونا التعليميون
+                        لمساعدتك
+                        في اختيار البرنامج الأنسب لمستقبلك.</p>
+                    <ul class="space-y-4 pt-4">
+                        <li class="flex items-center gap-3 justify-end">
+                            <span>استشارة مهنية مجانية</span>
+                            <span class="material-symbols-outlined text-secondary" data-icon="check_circle"
+                                style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        </li>
+                        <li class="flex items-center gap-3 justify-end">
+                            <span>خطط دفع ميسرة</span>
+                            <span class="material-symbols-outlined text-secondary" data-icon="check_circle"
+                                style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        </li>
+                        <li class="flex items-center gap-3 justify-end">
+                            <span>أولوية الحضور في ورش العمل</span>
+                            <span class="material-symbols-outlined text-secondary" data-icon="check_circle"
+                                style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-[2.5rem] p-10 shadow-2xl">
+                    <form class="space-y-6">
+                        <div class="space-y-2">
+                            <label class="block text-sm font-label font-bold text-primary">الاسم الكامل</label>
+                            <input
+                                class="w-full bg-surface-container-low border-none rounded-xl p-4 focus:ring-2 focus:ring-secondary transition-all"
+                                placeholder="أدخل اسمك الثلاثي" type="text" />
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="space-y-2">
+                                <label class="block text-sm font-label font-bold text-primary">البريد الإلكتروني</label>
+                                <input
+                                    class="w-full bg-surface-container-low border-none rounded-xl p-4 focus:ring-2 focus:ring-secondary transition-all"
+                                    placeholder="example@mail.com" type="email" />
+                            </div>
+                            <div class="space-y-2">
+                                <label class="block text-sm font-label font-bold text-primary">رقم الجوال</label>
+                                <input
+                                    class="w-full bg-surface-container-low border-none rounded-xl p-4 focus:ring-2 focus:ring-secondary transition-all text-left"
+                                    dir="ltr" placeholder="05xxxxxxxx" type="tel" />
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-label font-bold text-primary">البرنامج المفضل</label>
+                            <select
+                                class="w-full bg-surface-container-low border-none rounded-xl p-4 focus:ring-2 focus:ring-secondary transition-all appearance-none">
+                                <option>اختر البرنامج التدريبي</option>
+                                <option>الأمن السيبراني المتقدم</option>
+                                <option>إدارة المشاريع الإحترافية</option>
+                                <option>تحليل البيانات</option>
+                                <option>القيادة الإدارية</option>
+                            </select>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="block text-sm font-label font-bold text-primary">الرسالة (اختياري)</label>
+                            <textarea
+                                class="w-full bg-surface-container-low border-none rounded-xl p-4 focus:ring-2 focus:ring-secondary transition-all"
+                                placeholder="كيف يمكننا مساعدتك؟" rows="3"></textarea>
+                        </div>
+                        <button
+                            class="w-full bg-secondary-container hover:bg-amber-400 text-on-secondary-container py-4 rounded-xl font-black text-lg transition-all active:scale-95"
+                            type="submit">
+                            إرسال طلب التسجيل
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <!-- FAQ Section -->
+        <section class="py-24 px-6 bg-surface">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-black text-primary mb-12 text-center">الأسئلة الشائعة</h2>
+                <div class="space-y-4">
+                    <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm">
+                        <div class="flex justify-between items-center cursor-pointer">
+                            <span class="material-symbols-outlined text-secondary" data-icon="add">add</span>
+                            <h4 class="font-bold text-primary">هل الشهادات معتمدة من المؤسسة العامة للتدريب التقني
+                                والمهني؟</h4>
+                        </div>
+                    </div>
+                    <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm">
+                        <div class="flex justify-between items-center cursor-pointer">
+                            <span class="material-symbols-outlined text-secondary" data-icon="add">add</span>
+                            <h4 class="font-bold text-primary">هل يوجد نظام تقسيط لرسوم البرامج التدريبية؟</h4>
+                        </div>
+                    </div>
+                    <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm">
+                        <div class="flex justify-between items-center cursor-pointer">
+                            <span class="material-symbols-outlined text-secondary" data-icon="add">add</span>
+                            <h4 class="font-bold text-primary">ما هي متطلبات القبول في البرامج المتقدمة؟</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-sky-950 dark:bg-black w-full pt-16 pb-8 border-t-0">
+        <div class="rtl grid grid-cols-1 md:grid-cols-4 gap-12 px-10 max-w-7xl mx-auto">
+            <div class="space-y-6 md:col-span-1">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-3xl text-amber-500" data-icon="school">school</span>
+                    <span class="text-xl font-bold text-white">معهد رؤية</span>
+                </div>
+                <p class="text-slate-300 text-sm leading-relaxed">منصة تعليمية رائدة تهدف إلى تمكين الكوادر الوطنية
+                    بالمهارات
+                    اللازمة للمنافسة العالمية والتميز المهني.</p>
+                <div class="flex gap-4">
+                    <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined text-white text-xl" data-icon="share">share</span>
+                    </a>
+                    <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined text-white text-xl" data-icon="public">public</span>
+                    </a>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <h5 class="text-white font-bold border-r-2 border-secondary pr-3">روابط سريعة</h5>
+                <ul class="space-y-4 text-slate-300 text-sm">
+                    <li><a class="hover:text-white hover:translate-x-[-4px] transition-transform duration-300 inline-block"
+                            href="#">الرئيسية</a></li>
+                    <li><a class="hover:text-white hover:translate-x-[-4px] transition-transform duration-300 inline-block"
+                            href="#programs">البرامج التدريبية</a></li>
+                    <li><a class="hover:text-white hover:translate-x-[-4px] transition-transform duration-300 inline-block"
+                            href="#why-us">عن المعهد</a></li>
+                    <li><a class="hover:text-white hover:translate-x-[-4px] transition-transform duration-300 inline-block"
+                            href="#">اتصل بنا</a></li>
+                </ul>
+            </div>
+            <div class="space-y-6">
+                <h5 class="text-white font-bold border-r-2 border-secondary pr-3">البرامج الأكثر طلباً</h5>
+                <ul class="space-y-4 text-slate-300 text-sm">
+                    <li>الأمن السيبراني</li>
+                    <li>إدارة المشاريع</li>
+                    <li>الذكاء الاصطناعي</li>
+                    <li>مهارات القيادة</li>
+                </ul>
+            </div>
+            <div class="space-y-6">
+                <h5 class="text-white font-bold border-r-2 border-secondary pr-3">تواصل معنا</h5>
+                <div class="space-y-4 text-slate-300 text-sm">
+                    <div class="flex items-start gap-3 justify-end">
+                        <span>الرياض، حي الملقا، طريق الملك فهد</span>
+                        <span class="material-symbols-outlined text-amber-500"
+                            data-icon="location_on">location_on</span>
+                    </div>
+                    <div class="flex items-center gap-3 justify-end">
+                        <span>92000XXXX</span>
+                        <span class="material-symbols-outlined text-amber-500" data-icon="phone">phone</span>
+                    </div>
+                    <div class="flex items-center gap-3 justify-end">
+                        <span>info@tivi.edu.sa</span>
+                        <span class="material-symbols-outlined text-amber-500" data-icon="mail">mail</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-10 pt-12 mt-12 border-t border-white/10 text-center">
+            <p class="text-slate-500 text-xs font-label">© ٢٠٢٤ معهد رؤية للتدريب. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
