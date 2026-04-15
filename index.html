@@ -7,13 +7,10 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>معهد الرؤية للتدريب - المستقبل يبدأ هنا</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600&display=swap"
         rel="stylesheet" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script id="tailwind-config">
@@ -90,11 +87,12 @@
             --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
             --shadow-soft: 0 10px 40px rgba(0, 32, 51, 0.12);
             --shadow-strong: 0 20px 80px rgba(0, 32, 51, 0.22);
+            --glass-bg: rgba(255,255,255,0.12);
+            --glass-border: rgba(255,255,255,0.25);
+            --glass-blur: blur(20px);
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -105,12 +103,32 @@
             overflow-x: hidden;
         }
 
-        h1,
-        h2,
-        h3 {
-            font-family: 'Manrope', sans-serif;
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+
+        /* ─── GLASS UTILITY ─── */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
         }
 
+        .glass-light {
+            background: rgba(255,255,255,0.60);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 8px 32px rgba(0,59,90,0.10), inset 0 1px 0 rgba(255,255,255,0.8);
+        }
+
+        .glass-dark {
+            background: rgba(0,30,50,0.40);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.12);
+        }
+
+        /* ─── MATERIAL ICONS ─── */
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
             transition: transform .35s var(--ease-smooth),
@@ -119,12 +137,16 @@
                 text-shadow .35s var(--ease-smooth);
         }
 
+        /* ─── HEADER ─── */
         .glass-header {
-            backdrop-filter: blur(20px);
-            background-color: rgba(247, 250, 252, 0.7);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            background-color: rgba(247, 250, 252, 0.72);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.45);
+            box-shadow: 0 2px 20px rgba(0,59,90,0.06);
         }
 
+        /* ─── HERO ─── */
         .hero-gradient {
             position: relative;
             background:
@@ -135,424 +157,469 @@
         }
 
         .hero-grid {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background-image:
-                linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+                linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
             background-size: 60px 60px;
-            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), transparent 88%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1), transparent 88%);
             animation: gridFloat 16s linear infinite;
-            opacity: .35;
-            z-index: 0;
+            opacity: .35; z-index: 0;
         }
 
         .hero-noise {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background:
-                radial-gradient(circle at 30% 20%, rgba(255, 255, 255, .08) 0 1px, transparent 1px),
-                radial-gradient(circle at 70% 60%, rgba(255, 255, 255, .07) 0 1px, transparent 1px),
-                radial-gradient(circle at 50% 80%, rgba(255, 255, 255, .06) 0 1px, transparent 1px);
+                radial-gradient(circle at 30% 20%, rgba(255,255,255,.08) 0 1px, transparent 1px),
+                radial-gradient(circle at 70% 60%, rgba(255,255,255,.07) 0 1px, transparent 1px),
+                radial-gradient(circle at 50% 80%, rgba(255,255,255,.06) 0 1px, transparent 1px);
             background-size: 140px 140px, 180px 180px, 220px 220px;
             animation: particleMove 18s linear infinite;
-            opacity: .5;
-            z-index: 0;
-            pointer-events: none;
+            opacity: .5; z-index: 0; pointer-events: none;
         }
 
         .hero-blob {
-            position: absolute;
-            border-radius: 9999px;
-            filter: blur(60px);
-            opacity: .45;
-            z-index: 0;
-            pointer-events: none;
-            mix-blend-mode: screen;
+            position: absolute; border-radius: 9999px;
+            filter: blur(60px); opacity: .45; z-index: 0;
+            pointer-events: none; mix-blend-mode: screen;
+        }
+        .blob-1 { width:320px; height:320px; top:8%; right:8%; background:rgba(255,198,65,0.28); animation:floatY 8s ease-in-out infinite; }
+        .blob-2 { width:420px; height:420px; bottom:-60px; left:4%; background:rgba(146,204,255,0.24); animation:floatX 12s ease-in-out infinite; }
+        .blob-3 { width:220px; height:220px; bottom:18%; right:32%; background:rgba(255,255,255,0.12); animation:pulseBlob 7s ease-in-out infinite; }
+
+        /* ─── FLOATING PARTICLES (new) ─── */
+        .hero-particles { position:absolute; inset:0; pointer-events:none; z-index:1; overflow:hidden; }
+        .particle {
+            position:absolute; border-radius:50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, transparent 70%);
+            animation: particleDrift linear infinite;
+            opacity: 0;
         }
 
-        .blob-1 {
-            width: 320px;
-            height: 320px;
-            top: 8%;
-            right: 8%;
-            background: rgba(255, 198, 65, 0.28);
-            animation: floatY 8s ease-in-out infinite;
-        }
+        /* ─── FLOATING BADGES ─── */
+        .floating-badge { animation:badgeFloat 4.5s ease-in-out infinite; box-shadow:0 12px 30px rgba(0,0,0,.15); }
 
-        .blob-2 {
-            width: 420px;
-            height: 420px;
-            bottom: -60px;
-            left: 4%;
-            background: rgba(146, 204, 255, 0.24);
-            animation: floatX 12s ease-in-out infinite;
-        }
-
-        .blob-3 {
-            width: 220px;
-            height: 220px;
-            bottom: 18%;
-            right: 32%;
-            background: rgba(255, 255, 255, 0.12);
-            animation: pulseBlob 7s ease-in-out infinite;
-        }
-
-        .floating-badge {
-            animation: badgeFloat 4.5s ease-in-out infinite;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, .15);
-        }
-
-        .hero-image-wrap {
-            position: relative;
-            perspective: 1200px;
-        }
-
+        /* ─── HERO IMAGE ─── */
+        .hero-image-wrap { position:relative; perspective:1200px; }
         .hero-image-wrap::before {
-            content: "";
-            position: absolute;
-            inset: 8% -4% -8% 12%;
-            background: linear-gradient(135deg, rgba(255, 198, 65, .28), rgba(146, 204, 255, .14));
-            filter: blur(50px);
-            z-index: 0;
-            border-radius: 30px;
-            animation: pulseBlob 6s ease-in-out infinite;
+            content:""; position:absolute; inset:8% -4% -8% 12%;
+            background:linear-gradient(135deg, rgba(255,198,65,.28), rgba(146,204,255,.14));
+            filter:blur(50px); z-index:0; border-radius:30px;
+            animation:pulseBlob 6s ease-in-out infinite;
         }
-
         .hero-main-image {
-            position: relative;
-            z-index: 2;
+            position:relative; z-index:2;
             box-shadow: var(--shadow-strong);
-            transform-style: preserve-3d;
-            animation: heroImageFloat 6s ease-in-out infinite;
+            transform-style:preserve-3d;
+            animation:heroImageFloat 6s ease-in-out infinite;
+        }
+        .hero-main-image:hover { transform: rotateY(0deg) rotateX(0deg) scale(1.02) !important; }
+
+        /* ─── GLASS IMAGE OVERLAY ─── */
+        .hero-image-wrap::after {
+            content:""; position:absolute;
+            inset:-1px; z-index:3; border-radius:2rem;
+            background:linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 50%, rgba(146,204,255,0.06) 100%);
+            pointer-events:none;
         }
 
-        .hero-main-image:hover {
-            transform: rotateY(0deg) rotateX(0deg) scale(1.02) !important;
-        }
-
-        .shine-card {
-            position: relative;
-            overflow: hidden;
-        }
-
+        /* ─── SHINE CARD ─── */
+        .shine-card { position:relative; overflow:hidden; }
         .shine-card::after {
-            content: "";
-            position: absolute;
-            top: -120%;
-            left: -30%;
-            width: 40%;
-            height: 300%;
-            background: linear-gradient(to right, transparent, rgba(255, 255, 255, .24), transparent);
-            transform: rotate(18deg);
-            transition: transform .9s var(--ease-smooth);
-            pointer-events: none;
+            content:""; position:absolute; top:-120%; left:-30%;
+            width:40%; height:300%;
+            background:linear-gradient(to right, transparent, rgba(255,255,255,.24), transparent);
+            transform:rotate(18deg); transition:transform .9s var(--ease-smooth); pointer-events:none;
         }
+        .shine-card:hover::after { transform:translateX(420%) rotate(18deg); }
 
-        .shine-card:hover::after {
-            transform: translateX(420%) rotate(18deg);
-        }
-
+        /* ─── ELEVATED CARD ─── */
         .elevated-card {
-            transition:
-                transform .5s var(--ease-smooth),
-                box-shadow .5s var(--ease-smooth),
-                background-color .35s var(--ease-smooth);
+            transition: transform .5s var(--ease-smooth), box-shadow .5s var(--ease-smooth), background-color .35s var(--ease-smooth);
             box-shadow: var(--shadow-soft);
         }
+        .elevated-card:hover { transform:translateY(-10px); box-shadow:var(--shadow-strong); }
 
-        .elevated-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-strong);
+        /* ─── GLASS CARD (new) ─── */
+        .glass-card {
+            background: rgba(255,255,255,0.62);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255,255,255,0.55);
+            box-shadow: 0 8px 32px rgba(0,59,90,0.10), inset 0 1px 0 rgba(255,255,255,0.85);
+            transition: transform .5s var(--ease-smooth), box-shadow .5s var(--ease-smooth), background .35s;
+        }
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,59,90,0.16), inset 0 1px 0 rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.78);
         }
 
-        .icon-badge {
-            width: 64px;
-            height: 64px;
-            border-radius: 1.25rem;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(255, 198, 65, .18), rgba(146, 204, 255, .16));
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7), 0 10px 25px rgba(0, 59, 90, .12);
-            backdrop-filter: blur(12px);
-            transition: transform .35s var(--ease-smooth), box-shadow .35s var(--ease-smooth), background .35s var(--ease-smooth);
-        }
-
-        .icon-badge .material-symbols-outlined {
-            font-size: 2rem;
-            color: #0b4d72;
-        }
-
-        .icon-badge:hover {
-            transform: translateY(-4px) scale(1.06);
-            box-shadow: 0 18px 35px rgba(0, 59, 90, .18);
-            background: linear-gradient(135deg, rgba(255, 198, 65, .32), rgba(146, 204, 255, .28));
-        }
-
-        .icon-badge:hover .material-symbols-outlined {
-            color: #fff;
-            text-shadow: 0 0 16px rgba(255, 255, 255, .5);
-            font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 150, 'opsz' 24;
-            transform: scale(1.08) rotate(-4deg);
-        }
-
-        .section-reveal,
-        .reveal-item {
-            opacity: 0;
-            transform: translateY(40px) scale(.98);
-            transition:
-                opacity .9s var(--ease-smooth),
-                transform .9s var(--ease-smooth),
-                filter .9s var(--ease-smooth);
-            filter: blur(8px);
-            will-change: opacity, transform, filter;
-        }
-
-        .section-reveal.in-view,
-        .reveal-item.in-view {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-            filter: blur(0);
-        }
-
-        .reveal-item[data-delay="1"] {
-            transition-delay: .08s;
-        }
-
-        .reveal-item[data-delay="2"] {
-            transition-delay: .16s;
-        }
-
-        .reveal-item[data-delay="3"] {
-            transition-delay: .24s;
-        }
-
-        .reveal-item[data-delay="4"] {
-            transition-delay: .32s;
-        }
-
-        .reveal-item[data-delay="5"] {
-            transition-delay: .4s;
-        }
-
-        .reveal-item[data-delay="6"] {
-            transition-delay: .48s;
-        }
-
-        .program-card img,
-        .story-card,
-        .stats-card,
-        .faq-card,
-        .footer-card {
+        /* ─── PROGRAM CARD (glass overlay) ─── */
+        .program-card {
+            background: rgba(255,255,255,0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 8px 32px rgba(0,59,90,0.08), inset 0 1px 0 rgba(255,255,255,0.8);
             transition: transform .5s var(--ease-smooth), box-shadow .5s var(--ease-smooth);
         }
+        .program-card:hover {
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 24px 60px rgba(0,59,90,0.18);
+        }
+        .program-card img {
+            transition: transform .7s var(--ease-smooth);
+        }
+        .program-card:hover img { transform: scale(1.08); }
+        .program-card .card-img-overlay {
+            position:absolute; inset:0;
+            background: linear-gradient(to top, rgba(0,20,40,0.55) 0%, transparent 50%);
+            opacity:0; transition:opacity .4s;
+        }
+        .program-card:hover .card-img-overlay { opacity:1; }
 
-        .program-card:hover img {
-            transform: scale(1.08);
+        /* ─── ICON BADGE ─── */
+        .icon-badge {
+            width:64px; height:64px; border-radius:1.25rem;
+            display:inline-flex; align-items:center; justify-content:center;
+            background:linear-gradient(135deg, rgba(255,198,65,.18), rgba(146,204,255,.16));
+            box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 10px 25px rgba(0,59,90,.12);
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            transition: transform .35s var(--ease-smooth), box-shadow .35s var(--ease-smooth), background .35s var(--ease-smooth);
+        }
+        .icon-badge .material-symbols-outlined { font-size:2rem; color:#0b4d72; }
+        .icon-badge:hover {
+            transform:translateY(-4px) scale(1.06);
+            box-shadow:0 18px 35px rgba(0,59,90,.18);
+            background:linear-gradient(135deg, rgba(255,198,65,.32), rgba(146,204,255,.28));
+        }
+        .icon-badge:hover .material-symbols-outlined {
+            color:#fff;
+            text-shadow:0 0 16px rgba(255,255,255,.5);
+            font-variation-settings:'FILL' 1,'wght' 700,'GRAD' 150,'opsz' 24;
+            transform:scale(1.08) rotate(-4deg);
         }
 
-        .program-card:hover .card-arrow {
-            transform: translateX(-6px) scale(1.1);
+        /* ─── REVEAL ANIMATIONS ─── */
+        .section-reveal, .reveal-item {
+            opacity:0; transform:translateY(40px) scale(.98);
+            transition: opacity .9s var(--ease-smooth), transform .9s var(--ease-smooth), filter .9s var(--ease-smooth);
+            filter:blur(8px); will-change:opacity,transform,filter;
         }
+        .section-reveal.in-view, .reveal-item.in-view { opacity:1; transform:translateY(0) scale(1); filter:blur(0); }
+        .reveal-item[data-delay="1"] { transition-delay:.08s; }
+        .reveal-item[data-delay="2"] { transition-delay:.16s; }
+        .reveal-item[data-delay="3"] { transition-delay:.24s; }
+        .reveal-item[data-delay="4"] { transition-delay:.32s; }
+        .reveal-item[data-delay="5"] { transition-delay:.40s; }
+        .reveal-item[data-delay="6"] { transition-delay:.48s; }
 
-        .stats-card:hover {
-            transform: translateY(-6px);
+        /* ─── STORY CARDS ─── */
+        .story-card {
+            transition: transform .5s var(--ease-smooth), box-shadow .5s var(--ease-smooth);
         }
+        .story-card:hover { transform:translateY(-8px); box-shadow:var(--shadow-soft); }
 
-        .story-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-soft);
-        }
-
+        /* ─── FAQ CARDS ─── */
+        /* ─── FAQ ACCORDION ─── */
         .faq-card {
-            transition: transform .35s var(--ease-smooth), box-shadow .35s var(--ease-smooth), background-color .35s var(--ease-smooth);
-        }
-
-        .faq-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-soft);
-            background-color: #ffffff;
-        }
-
-        .faq-card:hover .material-symbols-outlined {
-            color: #795900;
-            transform: rotate(90deg);
-            font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 150, 'opsz' 24;
-        }
-
-        .btn-glow {
-            position: relative;
+            background: rgba(255,255,255,0.65);
+            backdrop-filter: blur(14px); -webkit-backdrop-filter:blur(14px);
+            border:1px solid rgba(255,255,255,0.5);
+            box-shadow: 0 4px 20px rgba(0,59,90,0.07);
+            transition: transform .35s var(--ease-smooth), box-shadow .35s var(--ease-smooth), background .35s, border-color .35s;
             overflow: hidden;
-            box-shadow: 0 12px 30px rgba(255, 198, 65, .22);
+        }
+        .faq-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 40px rgba(0,59,90,0.12);
+            background: rgba(255,255,255,0.82);
+        }
+        .faq-card.open {
+            border-color: rgba(255,198,65,0.5);
+            background: rgba(255,255,255,0.88);
+            box-shadow: 0 10px 40px rgba(0,59,90,0.12), inset 0 1px 0 rgba(255,255,255,0.9);
+            transform: translateY(-3px);
+        }
+        .faq-trigger {
+            display:flex; justify-content:space-between; align-items:center;
+            cursor:pointer; gap:1rem; user-select:none;
+        }
+        .faq-icon {
+            flex-shrink: 0;
+            width: 2rem; height: 2rem; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(0,59,90,0.07);
+            transition: background .3s, transform .4s var(--ease-smooth);
+        }
+        .faq-icon .material-symbols-outlined {
+            font-size: 1.25rem; color: #795900;
+            transition: transform .4s var(--ease-smooth), font-variation-settings .3s;
+        }
+        .faq-card.open .faq-icon {
+            background: rgba(255,198,65,0.18);
+        }
+        .faq-card.open .faq-icon .material-symbols-outlined {
+            transform: rotate(45deg);
+            font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 150, 'opsz' 24;
+            color: #795900;
+        }
+        .faq-body {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows .4s var(--ease-smooth);
+        }
+        .faq-body.open {
+            grid-template-rows: 1fr;
+        }
+        .faq-body-inner {
+            overflow: hidden;
+        }
+        .faq-answer {
+            padding: 1rem 0 0.25rem 0;
+            color: #41474e;
+            font-size: 0.95rem;
+            line-height: 1.75;
+            border-top: 1px solid rgba(0,59,90,0.08);
+            margin-top: 0.75rem;
         }
 
+        /* ─── GLOW BUTTON ─── */
+        .btn-glow {
+            position:relative; overflow:hidden;
+            box-shadow:0 12px 30px rgba(255,198,65,.22);
+        }
         .btn-glow::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .35), transparent);
-            transform: translateX(-120%);
+            content:""; position:absolute; inset:0;
+            background:linear-gradient(120deg, transparent, rgba(255,255,255,.35), transparent);
+            transform:translateX(-120%);
+        }
+        .btn-glow:hover::before { animation:btnShine 1s ease; }
+
+        /* ─── STATS SECTION ─── */
+        .stats-glass {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(28px); -webkit-backdrop-filter:blur(28px);
+            border:1px solid rgba(255,255,255,0.6);
+            box-shadow: 0 20px 60px rgba(0,59,90,0.12), inset 0 1px 0 rgba(255,255,255,0.9);
+        }
+        .stat-item {
+            transition: transform .4s var(--ease-smooth);
+        }
+        .stat-item:hover { transform:translateY(-6px); }
+        .stat-number {
+            background: linear-gradient(135deg, #003b5a, #1a7ab5);
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            background-clip:text;
         }
 
-        .btn-glow:hover::before {
-            animation: btnShine 1s ease;
+        /* ─── REGISTRATION SECTION ─── */
+        .register-section {
+            background:
+                radial-gradient(ellipse at 10% 50%, rgba(255,198,65,0.15) 0%, transparent 45%),
+                radial-gradient(ellipse at 90% 20%, rgba(146,204,255,0.15) 0%, transparent 40%),
+                linear-gradient(135deg, #021f33 0%, #0b4d72 55%, #1a5276 100%);
         }
 
-        .parallax-layer {
-            transition: transform .15s linear;
-            will-change: transform;
+        /* Aurora effect */
+        .aurora {
+            position:absolute; inset:0; pointer-events:none; overflow:hidden; z-index:0;
+        }
+        .aurora-ring {
+            position:absolute; border-radius:50%;
+            background: conic-gradient(from 0deg, rgba(255,198,65,0.12), rgba(146,204,255,0.14), rgba(255,255,255,0.06), rgba(255,198,65,0.12));
+            filter:blur(40px);
+            animation: auroraRotate 20s linear infinite;
+        }
+        .aurora-ring-1 { width:600px; height:600px; top:-150px; right:-100px; }
+        .aurora-ring-2 { width:400px; height:400px; bottom:-80px; left:-80px; animation-direction:reverse; animation-duration:15s; }
+
+        /* ─── FORM GLASS CONTAINER ─── */
+        .form-glass-wrap {
+            background: rgba(255,255,255,0.10);
+            backdrop-filter:blur(32px); -webkit-backdrop-filter:blur(32px);
+            border:1px solid rgba(255,255,255,0.22);
+            box-shadow: 0 30px 80px rgba(0,20,50,0.30), inset 0 1px 0 rgba(255,255,255,0.25);
+            border-radius: 2rem;
         }
 
-        @keyframes floatY {
+        /* ─── FORM FLOATING LABEL INPUTS ─── */
+        .form-field {
+            position:relative;
+        }
+        .form-field label {
+            position:absolute; top:50%; right:1rem; transform:translateY(-50%);
+            font-size:0.875rem; color:rgba(255,255,255,0.6);
+            pointer-events:none; transition: all .25s var(--ease-smooth);
+            font-family:'Plus Jakarta Sans',sans-serif; font-weight:600;
+        }
+        .form-field.has-icon label { right:3rem; }
+        .form-field textarea ~ label { top:1.2rem; transform:none; }
+        .form-field select ~ label,
+        .form-field input:not(:placeholder-shown) ~ label,
+        .form-field input:focus ~ label,
+        .form-field textarea:not(:placeholder-shown) ~ label,
+        .form-field textarea:focus ~ label {
+            top:0.5rem; font-size:0.7rem; color:rgba(255,198,65,0.95);
+            transform:translateY(0);
+        }
+        .form-field select ~ label { top:0.5rem; font-size:0.7rem; color:rgba(255,198,65,0.85); transform:translateY(0); }
 
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
+        .form-input {
+            width:100%; padding: 1.5rem 1rem 0.5rem 1rem;
+            border-radius:0.875rem;
+            background:rgba(255,255,255,0.09);
+            border:1px solid rgba(255,255,255,0.18);
+            color:#fff; font-size:0.95rem;
+            transition: border-color .25s, box-shadow .25s, background .25s;
+            outline:none; appearance:none;
+        }
+        .form-input::placeholder { color:transparent; }
+        .form-input:focus {
+            background:rgba(255,255,255,0.14);
+            border-color:rgba(255,198,65,0.7);
+            box-shadow: 0 0 0 3px rgba(255,198,65,0.15), 0 4px 20px rgba(255,198,65,0.08);
+        }
+        .form-input option { color:#181c1e; background:#fff; }
+        .form-field-icon {
+            position:absolute; left:1rem; top:50%; transform:translateY(-50%);
+            color:rgba(255,255,255,0.4); pointer-events:none;
+            transition: color .25s;
+        }
+        .form-field:focus-within .form-field-icon { color:rgba(255,198,65,0.85); }
+        .form-field textarea { padding-top:1.4rem; }
 
-            50% {
-                transform: translateY(-26px);
-            }
+        /* ─── REGISTER BENEFITS ─── */
+        .benefit-item {
+            display:flex; align-items:center; gap:0.75rem; justify-content:flex-end;
+        }
+        .benefit-check {
+            width:2rem; height:2rem; border-radius:50%; flex-shrink:0;
+            background:linear-gradient(135deg, rgba(255,198,65,0.25), rgba(255,198,65,0.12));
+            border:1px solid rgba(255,198,65,0.35);
+            display:flex; align-items:center; justify-content:center;
+            box-shadow: 0 4px 12px rgba(255,198,65,0.15);
         }
 
-        @keyframes floatX {
+        /* ─── SUBMIT BUTTON ─── */
+        .submit-btn {
+            position:relative; overflow:hidden;
+            background:linear-gradient(135deg, #ffc641, #f6a800);
+            color:#3a2600; font-weight:900; font-size:1.05rem; letter-spacing:.01em;
+            border:none; border-radius:0.875rem; padding:1rem 2rem; width:100%; cursor:pointer;
+            box-shadow: 0 12px 30px rgba(255,198,65,0.35), 0 4px 12px rgba(255,198,65,0.20);
+            transition: transform .35s var(--ease-smooth), box-shadow .35s var(--ease-smooth);
+        }
+        .submit-btn::before {
+            content:""; position:absolute; inset:0;
+            background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%);
+            transform:translateX(-150%); border-radius:inherit;
+        }
+        .submit-btn:hover::before { animation:btnShine .9s ease; }
+        .submit-btn:hover {
+            transform:translateY(-3px) scale(1.01);
+            box-shadow: 0 20px 48px rgba(255,198,65,0.45), 0 8px 20px rgba(255,198,65,0.25);
+        }
+        .submit-btn:active { transform:scale(.97); }
 
-            0%,
-            100% {
-                transform: translateX(0px);
-            }
+        /* ─── PARALLAX ─── */
+        .parallax-layer { transition:transform .15s linear; will-change:transform; }
 
-            50% {
-                transform: translateX(28px);
-            }
+        /* ─── TESTIMONIALS GLASS ─── */
+        .testimonial-glass {
+            background: rgba(255,255,255,0.68);
+            backdrop-filter: blur(22px); -webkit-backdrop-filter:blur(22px);
+            border:1px solid rgba(255,255,255,0.55);
+            box-shadow: 0 8px 32px rgba(0,59,90,0.09), inset 0 1px 0 rgba(255,255,255,0.85);
         }
 
-        @keyframes pulseBlob {
-
-            0%,
-            100% {
-                transform: scale(1);
-                opacity: .38;
-            }
-
-            50% {
-                transform: scale(1.12);
-                opacity: .55;
-            }
+        /* Avatar placeholder glow */
+        .avatar-ring {
+            background: linear-gradient(135deg, #0b4d72, #ffc641);
+            padding:2px; border-radius:50%;
+        }
+        .avatar-inner {
+            width:40px; height:40px; border-radius:50%;
+            background:linear-gradient(135deg, #cce5ff, #e8d5a0);
+            display:flex; align-items:center; justify-content:center;
+            font-weight:700; color:#0b4d72; font-size:0.85rem;
         }
 
-        @keyframes heroImageFloat {
-
-            0%,
-            100% {
-                transform: rotateY(-8deg) rotateX(4deg) translateY(0px);
-            }
-
-            50% {
-                transform: rotateY(-4deg) rotateX(2deg) translateY(-12px);
-            }
+        /* ─── ANIMATIONS ─── */
+        @keyframes floatY { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-26px)} }
+        @keyframes floatX { 0%,100%{transform:translateX(0px)} 50%{transform:translateX(28px)} }
+        @keyframes pulseBlob { 0%,100%{transform:scale(1);opacity:.38} 50%{transform:scale(1.12);opacity:.55} }
+        @keyframes heroImageFloat { 0%,100%{transform:rotateY(-8deg) rotateX(4deg) translateY(0px)} 50%{transform:rotateY(-4deg) rotateX(2deg) translateY(-12px)} }
+        @keyframes gridFloat { from{transform:translateY(0)} to{transform:translateY(60px)} }
+        @keyframes particleMove { from{transform:translate3d(0,0,0)} to{transform:translate3d(-20px,24px,0)} }
+        @keyframes badgeFloat { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-8px)} }
+        @keyframes btnShine { 100%{transform:translateX(150%)} }
+        @keyframes auroraRotate { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+        @keyframes particleDrift {
+            0%   { transform:translateY(0) translateX(0); opacity:0; }
+            10%  { opacity:0.8; }
+            90%  { opacity:0.5; }
+            100% { transform:translateY(-100vh) translateX(var(--drift-x,20px)); opacity:0; }
         }
-
-        @keyframes gridFloat {
-            from {
-                transform: translateY(0);
-            }
-
-            to {
-                transform: translateY(60px);
-            }
-        }
-
-        @keyframes particleMove {
-            from {
-                transform: translate3d(0, 0, 0);
-            }
-
-            to {
-                transform: translate3d(-20px, 24px, 0);
-            }
-        }
-
-        @keyframes badgeFloat {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-8px);
-            }
-        }
-
-        @keyframes btnShine {
-            100% {
-                transform: translateX(140%);
-            }
-        }
+        @keyframes countUp { from{ opacity:0; transform:scale(0.7) translateY(20px); } to{ opacity:1; transform:scale(1) translateY(0); } }
+        @keyframes glowPulse { 0%,100%{box-shadow:0 0 20px rgba(255,198,65,0.2)} 50%{box-shadow:0 0 40px rgba(255,198,65,0.4)} }
 
         @media (prefers-reduced-motion: reduce) {
-
-            *,
-            *::before,
-            *::after {
-                animation: none !important;
-                transition: none !important;
-                scroll-behavior: auto !important;
-            }
-
-            .section-reveal,
-            .reveal-item {
-                opacity: 1 !important;
-                transform: none !important;
-                filter: none !important;
-            }
+            *, *::before, *::after { animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+            .section-reveal, .reveal-item { opacity:1 !important; transform:none !important; filter:none !important; }
         }
     </style>
-
 </head>
 
 <body class="bg-surface text-on-surface">
-    <!-- TopAppBar -->
+
+    <!-- ═══ TOP APP BAR ═══ -->
     <header class="sticky top-0 w-full z-50 glass-header shadow-sm">
         <nav class="rtl flex flex-row-reverse justify-between items-center px-6 py-4 max-w-7xl mx-auto">
             <div class="flex items-center gap-3">
-                <span class="text-2xl font-black text-sky-950 font-headline tracking-tight">
-                    <img src="logo.png" alt="logo" class="h-12">
-                </span>
+                <img src="logo.png" alt="logo" class="h-12">
             </div>
             <div class="hidden md:flex items-center gap-8 font-body text-slate-600">
-                <a class="text-amber-600 dark:text-amber-500 border-b-2 border-amber-600 px-1 py-1 font-semibold"
-                    href="#">الرئيسية</a>
-                <a class="text-slate-600 hover:text-amber-600 transition-colors" href="#programs">البرامج</a>
-                <a class="text-slate-600 hover:text-amber-600 transition-colors" href="#why-us">لماذا نحن</a>
-                <a class="text-slate-600 hover:text-amber-600 transition-colors" href="#stories">قصص النجاح</a>
+                <a class="text-amber-600 dark:text-amber-500 border-b-2 border-amber-600 px-1 py-1 font-semibold relative" href="#">الرئيسية</a>
+                <a class="text-slate-600 hover:text-amber-600 transition-colors relative group" href="#programs">
+                    البرامج
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-full rounded-full"></span>
+                </a>
+                <a class="text-slate-600 hover:text-amber-600 transition-colors relative group" href="#why-us">
+                    لماذا نحن
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-full rounded-full"></span>
+                </a>
+                <a class="text-slate-600 hover:text-amber-600 transition-colors relative group" href="#stories">
+                    قصص النجاح
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-full rounded-full"></span>
+                </a>
             </div>
             <div class="flex items-center">
-                <a class="bg-primary hover:bg-primary-container text-white px-6 py-2.5 rounded-xl font-bold transition-all active:scale-95 duration-200"
+                <a class="bg-primary hover:bg-primary-container text-white px-6 py-2.5 rounded-xl font-bold transition-all active:scale-95 duration-200 shadow-md hover:shadow-lg hover:-translate-y-0.5"
                     href="#register">
                     تسجيل
                 </a>
             </div>
         </nav>
     </header>
+
     <main>
-        <!-- Hero Section -->
+        <!-- ═══ HERO ═══ -->
         <section class="hero-gradient relative overflow-hidden min-h-[88vh] flex items-center section-reveal" id="hero">
             <div class="hero-grid"></div>
             <div class="hero-noise"></div>
             <div class="hero-blob blob-1 parallax-layer" data-speed="8"></div>
             <div class="hero-blob blob-2 parallax-layer" data-speed="-6"></div>
             <div class="hero-blob blob-3 parallax-layer" data-speed="4"></div>
+            <div class="hero-particles" id="heroParticles"></div>
 
+            <!-- Floating Badge - Certificates -->
             <div class="absolute top-24 left-10 hidden lg:flex floating-badge parallax-layer" data-speed="-10">
-                <div
-                    class="bg-white/10 border border-white/20 backdrop-blur-xl rounded-2xl px-5 py-4 text-white shadow-xl">
+                <div class="glass rounded-2xl px-5 py-4 text-white shadow-xl">
                     <div class="flex items-center gap-3">
-                        <span class="icon-badge !w-12 !h-12 bg-white/10">
-                            <span class="material-symbols-outlined text-white"
-                                style="color:white;">workspace_premium</span>
+                        <span class="icon-badge !w-12 !h-12" style="background:rgba(255,255,255,0.15);">
+                            <span class="material-symbols-outlined" style="color:white;">workspace_premium</span>
                         </span>
                         <div>
                             <p class="text-sm opacity-80">شهادات قوية</p>
@@ -562,12 +629,12 @@
                 </div>
             </div>
 
+            <!-- Floating Badge - Employment -->
             <div class="absolute bottom-24 right-8 hidden lg:flex floating-badge parallax-layer" data-speed="12">
-                <div
-                    class="bg-white/10 border border-white/20 backdrop-blur-xl rounded-2xl px-5 py-4 text-white shadow-xl">
+                <div class="glass rounded-2xl px-5 py-4 text-white shadow-xl">
                     <div class="flex items-center gap-3">
-                        <span class="icon-badge !w-12 !h-12 bg-white/10">
-                            <span class="material-symbols-outlined text-white" style="color:white;">trending_up</span>
+                        <span class="icon-badge !w-12 !h-12" style="background:rgba(255,255,255,0.15);">
+                            <span class="material-symbols-outlined" style="color:white;">trending_up</span>
                         </span>
                         <div>
                             <p class="text-sm opacity-80">نتائج ملموسة</p>
@@ -579,15 +646,14 @@
 
             <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center relative z-10 py-24">
                 <div class="text-right space-y-8 reveal-item" data-delay="1">
-                    <div
-                        class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-secondary-fixed shadow-lg">
-                        <span class="material-symbols-outlined text-sm" data-icon="auto_awesome">auto_awesome</span>
+                    <div class="inline-flex items-center gap-2 px-4 py-2 glass border rounded-full text-secondary-fixed shadow-lg" style="border-color:rgba(255,255,255,0.25);">
+                        <span class="material-symbols-outlined text-sm">auto_awesome</span>
                         <span class="text-sm font-label uppercase tracking-wider">نحو مستقبل مهني واعد</span>
                     </div>
 
                     <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-[1.08] tracking-tight">
                         استثمر في رؤيتك، <br />
-                        <span class="text-secondary-container inline-block drop-shadow-md">اصنع مستقبلك</span>
+                        <span class="text-secondary-container inline-block drop-shadow-md" style="text-shadow:0 0 40px rgba(255,198,65,0.5);">اصنع مستقبلك</span>
                     </h1>
 
                     <p class="text-primary-fixed text-lg md:text-xl max-w-xl leading-relaxed opacity-95">
@@ -596,25 +662,27 @@
                     </p>
 
                     <div class="flex flex-wrap gap-4 pt-4">
-                        <a class="btn-glow bg-secondary-container hover:bg-amber-400 text-on-secondary-container px-8 py-4 rounded-xl font-extrabold text-lg transition-all hover:-translate-y-1"
+                        <a class="btn-glow bg-secondary-container hover:bg-amber-400 text-on-secondary-container px-8 py-4 rounded-xl font-extrabold text-lg transition-all hover:-translate-y-1 shadow-xl"
                             href="#register">
                             سجل الآن
                         </a>
+                        <a class="glass px-8 py-4 rounded-xl font-bold text-lg text-white transition-all hover:-translate-y-1 flex items-center gap-2"
+                            href="#programs">
+                            <span>استعرض البرامج</span>
+                            <span class="material-symbols-outlined rtl:rotate-180">arrow_forward</span>
+                        </a>
                     </div>
 
-                    <div class="flex flex-wrap gap-4 pt-2 text-white/90">
-                        <div
-                            class="flex items-center gap-2 bg-white/8 rounded-full px-4 py-2 backdrop-blur-sm border border-white/10">
+                    <div class="flex flex-wrap gap-3 pt-2 text-white/90">
+                        <div class="flex items-center gap-2 glass rounded-full px-4 py-2">
                             <span class="material-symbols-outlined text-secondary-container">verified</span>
                             <span class="text-sm">برامج معتمدة</span>
                         </div>
-                        <div
-                            class="flex items-center gap-2 bg-white/8 rounded-full px-4 py-2 backdrop-blur-sm border border-white/10">
+                        <div class="flex items-center gap-2 glass rounded-full px-4 py-2">
                             <span class="material-symbols-outlined text-secondary-container">groups</span>
                             <span class="text-sm">خبراء ممارسون</span>
                         </div>
-                        <div
-                            class="flex items-center gap-2 bg-white/8 rounded-full px-4 py-2 backdrop-blur-sm border border-white/10">
+                        <div class="flex items-center gap-2 glass rounded-full px-4 py-2">
                             <span class="material-symbols-outlined text-secondary-container">bolt</span>
                             <span class="text-sm">تعلم سريع وعملي</span>
                         </div>
@@ -625,7 +693,6 @@
                     <div class="hero-image-wrap">
                         <img alt="Hero image showing students"
                             class="hero-main-image rounded-[2rem] border-4 border-white/10"
-                            data-alt="high-quality cinematic portrait of diverse professional students collaborating in a modern high-tech classroom with soft natural lighting and depth of field"
                             src="aaa.jpeg" />
                     </div>
                 </div>
@@ -634,122 +701,155 @@
             <div class="absolute bottom-0 left-0 w-full h-28 bg-gradient-to-t from-surface to-transparent"></div>
         </section>
 
-        <!-- Fun Facts / Stats -->
+        <!-- ═══ STATS ═══ -->
         <section class="relative z-20 -mt-12 px-6">
-            <div
-                class="max-w-6xl mx-auto bg-surface-container-lowest shadow-xl rounded-[2rem] p-8 md:p-12 grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div class="text-center space-y-2">
-                    <p class="text-primary text-4xl font-black font-headline tracking-tighter">+15,000</p>
+            <div class="max-w-6xl mx-auto stats-glass rounded-[2rem] p-8 md:p-12 grid grid-cols-2 md:grid-cols-4 gap-8 reveal-item section-reveal">
+                <div class="text-center space-y-2 stat-item">
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-3" style="background:rgba(0,59,90,0.06); backdrop-filter:blur(8px);">
+                        <span class="material-symbols-outlined text-primary" style="font-size:1.75rem;">school</span>
+                    </div>
+                    <p class="text-4xl font-black font-headline tracking-tighter stat-number">+15,000</p>
                     <p class="text-on-surface-variant font-label text-sm uppercase">خريج متميز</p>
                 </div>
-                <div class="text-center space-y-2">
-                    <p class="text-primary text-4xl font-black font-headline tracking-tighter">98%</p>
+                <div class="text-center space-y-2 stat-item">
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-3" style="background:rgba(0,59,90,0.06); backdrop-filter:blur(8px);">
+                        <span class="material-symbols-outlined text-primary" style="font-size:1.75rem;">trending_up</span>
+                    </div>
+                    <p class="text-4xl font-black font-headline tracking-tighter stat-number">98%</p>
                     <p class="text-on-surface-variant font-label text-sm uppercase">نسبة التوظيف</p>
                 </div>
-                <div class="text-center space-y-2">
-                    <p class="text-primary text-4xl font-black font-headline tracking-tighter">+120</p>
+                <div class="text-center space-y-2 stat-item">
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-3" style="background:rgba(0,59,90,0.06); backdrop-filter:blur(8px);">
+                        <span class="material-symbols-outlined text-primary" style="font-size:1.75rem;">article</span>
+                    </div>
+                    <p class="text-4xl font-black font-headline tracking-tighter stat-number">+120</p>
                     <p class="text-on-surface-variant font-label text-sm uppercase">برنامج تدريبي</p>
                 </div>
-                <div class="text-center space-y-2">
-                    <p class="text-primary text-4xl font-black font-headline tracking-tighter">+50</p>
+                <div class="text-center space-y-2 stat-item">
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-3" style="background:rgba(0,59,90,0.06); backdrop-filter:blur(8px);">
+                        <span class="material-symbols-outlined text-primary" style="font-size:1.75rem;">handshake</span>
+                    </div>
+                    <p class="text-4xl font-black font-headline tracking-tighter stat-number">+50</p>
                     <p class="text-on-surface-variant font-label text-sm uppercase">شريك استراتيجي</p>
                 </div>
             </div>
         </section>
-        <!-- Featured Programs -->
+
+        <!-- ═══ PROGRAMS ═══ -->
         <section class="py-24 px-6 bg-surface" id="programs">
             <div class="max-w-7xl mx-auto">
-                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-                    <div class="space-y-4 max-w-2xl text-right">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 section-reveal">
+                    <div class="space-y-4 max-w-2xl text-right reveal-item" data-delay="1">
+                        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-2"
+                            style="background:rgba(0,59,90,0.08); color:#003b5a; border:1px solid rgba(0,59,90,0.12);">
+                            <span class="material-symbols-outlined" style="font-size:1rem;">star</span>
+                            برامجنا المتميزة
+                        </div>
                         <h2 class="text-4xl md:text-5xl font-black text-primary">البرامج التدريبية المختارة</h2>
-                        <p class="text-on-surface-variant text-lg">نقدم نخبة من البرامج النوعية المصممة بعناية لتلبية
-                            متطلبات رؤية
-                            المملكة 2030.</p>
+                        <p class="text-on-surface-variant text-lg">نقدم نخبة من البرامج النوعية المصممة بعناية لتلبية متطلبات رؤية المملكة 2030.</p>
                     </div>
-                    <a class="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all" href="#">
+                    <a class="text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all reveal-item" data-delay="2" href="#">
                         <span>عرض كافة البرامج</span>
-                        <span class="material-symbols-outlined rtl:rotate-180"
-                            data-icon="arrow_forward">arrow_forward</span>
+                        <span class="material-symbols-outlined rtl:rotate-180">arrow_forward</span>
                     </a>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Course Card 1 -->
-                    <div
-                        class="bg-surface-container-low rounded-[2.5rem] overflow-hidden group hover:shadow-2xl transition-shadow duration-500">
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 section-reveal">
+                    <!-- Card 1 -->
+                    <div class="program-card rounded-[2.5rem] overflow-hidden group reveal-item" data-delay="1">
                         <div class="h-64 relative overflow-hidden">
                             <img alt="Cybersecurity program"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                                data-alt="modern close-up of a laptop displaying complex coding and security data in a dimly lit high-tech environment with blue lighting"
+                                class="w-full h-full object-cover"
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdhpPhvvvInHIS6xzsAZ5qisbMfjMtBr0g6OJCfnB7bqkwn90gI6tf0V7LomTCVelOs4w5VotPwFuvjPTSfy-Ku9IkgeYA9oPdbi1eW7MElk3fh-JQfuwA8-voBp6vImkxlsY55sgc0WYbxAA0kwuYcWrONPlSPA8qz3Bl6Q3VBWdXX4kJcKNpEmFJ94RA2OtFbwI7o4qlihV3TQWFVrvhdE25u8EWox3wYUjfGPpTMAq5rtEIpZtrRrTlrFc7WISvoy4wheVQKV8" />
+                            <div class="card-img-overlay"></div>
                             <div class="absolute top-6 right-6">
-                                <span class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-full">برنامج
-                                    معتمد</span>
+                                <span class="glass text-white text-xs font-bold px-4 py-2 rounded-full" style="border-color:rgba(255,255,255,0.35);">برنامج معتمد</span>
+                            </div>
+                            <!-- Bottom glass info bar -->
+                            <div class="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                style="background:rgba(0,20,40,0.65); backdrop-filter:blur(10px);">
+                                <p class="text-white text-sm font-bold">الأمن السيبراني المتقدم</p>
+                                <p class="text-white/70 text-xs">⭐⭐⭐⭐⭐ · 250+ متدرب راضٍ</p>
                             </div>
                         </div>
                         <div class="p-8 space-y-4">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-amber-400 inline-block"></span>
+                                <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">أمن المعلومات</span>
+                            </div>
                             <h3 class="text-2xl font-bold text-primary">الأمن السيبراني المتقدم</h3>
-                            <p class="text-on-surface-variant leading-relaxed">برنامج شامل يغطي حماية الشبكات، كشف
-                                التسلل، والاستجابة
-                                للحوادث الرقمية بمعايير عالمية.</p>
+                            <p class="text-on-surface-variant leading-relaxed">برنامج شامل يغطي حماية الشبكات، كشف التسلل، والاستجابة للحوادث الرقمية بمعايير عالمية.</p>
                             <div class="pt-4 flex justify-between items-center border-t border-outline-variant/30">
                                 <span class="text-secondary font-bold">12 أسبوع</span>
-                                <button
-                                    class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary-container transition-colors">
-                                    <span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+                                <button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary-container transition-colors hover:scale-110 shadow-md">
+                                    <span class="material-symbols-outlined">chevron_left</span>
                                 </button>
                             </div>
                         </div>
                     </div>
-                    <!-- Course Card 2 -->
-                    <div
-                        class="bg-surface-container-low rounded-[2.5rem] overflow-hidden group hover:shadow-2xl transition-shadow duration-500">
+
+                    <!-- Card 2 (featured) -->
+                    <div class="program-card rounded-[2.5rem] overflow-hidden group reveal-item relative" data-delay="2"
+                        style="border-color:rgba(255,198,65,0.5); box-shadow:0 8px 32px rgba(255,198,65,0.18), inset 0 1px 0 rgba(255,255,255,0.8);">
+                        <!-- Featured glow -->
+                        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-yellow-300 to-amber-500 z-10"></div>
                         <div class="h-64 relative overflow-hidden">
                             <img alt="Management program"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                                data-alt="professional business group meeting in a bright minimalist glass boardroom with city skyline background and professional atmosphere"
+                                class="w-full h-full object-cover"
                                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdWKMeqXeXpdWrQV9iB3-dFnYeqEhL49EXVdq7yX11wJ_mblIYx3XHlzJ8LXFK432Rc0zZUa_qGi3FdzRsdtmcz4OamO2K6NnpnflXlt3PjxSQBmI3L8xeBS0MOyIwpatNYb9PPqfHIwWlRR2aF_crQnDW-CR03G2QayiN3pQLdRKtpcz9RLz16m0rUU59PIhmVioqogyBE_5oosAVmk38WUpqaevL4BpA0DeGBzn0b14GDn29GuHDAU_nudxtzHTfoZPUBML1zrI" />
+                            <div class="card-img-overlay"></div>
                             <div class="absolute top-6 right-6">
-                                <span
-                                    class="bg-secondary-container text-on-secondary-container text-xs font-bold px-4 py-2 rounded-full">الأكثر
-                                    طلباً</span>
+                                <span class="bg-secondary-container text-on-secondary-container text-xs font-bold px-4 py-2 rounded-full shadow-lg">الأكثر طلباً ⭐</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                style="background:rgba(0,20,40,0.65); backdrop-filter:blur(10px);">
+                                <p class="text-white text-sm font-bold">إدارة المشاريع الإحترافية</p>
+                                <p class="text-white/70 text-xs">⭐⭐⭐⭐⭐ · 420+ متدرب راضٍ</p>
                             </div>
                         </div>
                         <div class="p-8 space-y-4">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-amber-400 inline-block"></span>
+                                <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">القيادة والإدارة</span>
+                            </div>
                             <h3 class="text-2xl font-bold text-primary">إدارة المشاريع الإحترافية</h3>
-                            <p class="text-on-surface-variant leading-relaxed">إتقان منهجيات PMP و Agile لقيادة الفرق
-                                بنجاح وتحقيق
-                                الأهداف الاستراتيجية للمنظمات.</p>
+                            <p class="text-on-surface-variant leading-relaxed">إتقان منهجيات PMP و Agile لقيادة الفرق بنجاح وتحقيق الأهداف الاستراتيجية للمنظمات.</p>
                             <div class="pt-4 flex justify-between items-center border-t border-outline-variant/30">
                                 <span class="text-secondary font-bold">8 أسابيع</span>
-                                <button
-                                    class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary-container transition-colors">
-                                    <span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+                                <button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary-container transition-colors hover:scale-110 shadow-md">
+                                    <span class="material-symbols-outlined">chevron_left</span>
                                 </button>
                             </div>
                         </div>
                     </div>
-                    <!-- Course Card 3 -->
-                    <div
-                        class="bg-surface-container-low rounded-[2.5rem] overflow-hidden group hover:shadow-2xl transition-shadow duration-500">
+
+                    <!-- Card 3 -->
+                    <div class="program-card rounded-[2.5rem] overflow-hidden group reveal-item" data-delay="3">
                         <div class="h-64 relative overflow-hidden">
                             <img alt="Data science program"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                                data-alt="stylized 3D visualization of glowing network data connections and abstract digital architecture in shades of deep blue and gold"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT7HAgpPdraM2Os81bbzdj4McLYZrIGOyk6cHodqfV4vEt5Arkx0cLGz3Q3gOiiaWLv9ojHSevl-LOQh00bU6YMdeolliVCwiU0yjqdYnqIUWngsqGlSNp9Vrr5mTj8CQ-wn7n3yuEgHPkbSxHc-J3a3dhHz5yDmQ5nTugJOmLx8n2H9eqSzinCE5p2u7HnuxOEyfSaVqboZAZ8jU4MenoEDlhwQ6CPJV60dMfRiXD_cVzBZy10uzD_Y3ozlGhXwec4cdHXDn6jI4" />
+                                class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBT7HAgpPdraM2Os81bbzdj4McLYZrIGOyk6cHodqfV4vEt5Arkx0cLGz3Q3gOiiaWLv9ojHSevl-LOQh00bU6YMdeolliVCwiU0yjqdYnqIUWngsqGlSNp9Vrr5mTj8CQ-wn7n3yuEgHPkbSxHc-J3a3dhHz5yDmQ5nTugJOmLx8n2H9eqSzinCE5p2u7HnuxOEyfSaVqboZAZ8jU4MenoEeDlhwQ6CPJV60dMfRiXD_cVzBZy10uzD_Y3ozlGhXwec4cdHXDn6jI4" />
+                            <div class="card-img-overlay"></div>
                             <div class="absolute top-6 right-6">
-                                <span class="bg-primary text-white text-xs font-bold px-4 py-2 rounded-full">جديد</span>
+                                <span class="glass text-white text-xs font-bold px-4 py-2 rounded-full" style="border-color:rgba(255,255,255,0.35);">جديد 🚀</span>
+                            </div>
+                            <div class="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                style="background:rgba(0,20,40,0.65); backdrop-filter:blur(10px);">
+                                <p class="text-white text-sm font-bold">تحليل البيانات والذكاء الاصطناعي</p>
+                                <p class="text-white/70 text-xs">⭐⭐⭐⭐⭐ · 180+ متدرب راضٍ</p>
                             </div>
                         </div>
                         <div class="p-8 space-y-4">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-amber-400 inline-block"></span>
+                                <span class="text-xs font-bold text-amber-600 uppercase tracking-wider">الذكاء الاصطناعي</span>
+                            </div>
                             <h3 class="text-2xl font-bold text-primary">تحليل البيانات والذكاء الاصطناعي</h3>
-                            <p class="text-on-surface-variant leading-relaxed">تعلم تحويل البيانات إلى رؤى قيمة باستخدام
-                                أحدث أدوات
-                                التحليل وتقنيات التعلم الآلي.</p>
+                            <p class="text-on-surface-variant leading-relaxed">تعلم تحويل البيانات إلى رؤى قيمة باستخدام أحدث أدوات التحليل وتقنيات التعلم الآلي.</p>
                             <div class="pt-4 flex justify-between items-center border-t border-outline-variant/30">
                                 <span class="text-secondary font-bold">14 أسبوع</span>
-                                <button
-                                    class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary-container transition-colors">
-                                    <span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+                                <button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-secondary-container transition-colors hover:scale-110 shadow-md">
+                                    <span class="material-symbols-outlined">chevron_left</span>
                                 </button>
                             </div>
                         </div>
@@ -757,252 +857,428 @@
                 </div>
             </div>
         </section>
-        <!-- Why Us - Bento Grid Style -->
-        <section class="py-24 px-6 bg-surface-container-low section-reveal" id="why-us">
-            <div class="max-w-7xl mx-auto">
+
+        <!-- ═══ WHY US – BENTO GLASS GRID ═══ -->
+        <section class="py-24 px-6 section-reveal relative overflow-hidden" id="why-us"
+            style="background:linear-gradient(160deg, #eef4f8 0%, #e8f0f6 50%, #f1f6fa 100%);">
+            <!-- Decorative blobs -->
+            <div class="absolute top-0 right-0 w-96 h-96 rounded-full opacity-40 pointer-events-none"
+                style="background:radial-gradient(circle, rgba(146,204,255,0.3), transparent 70%); filter:blur(60px); transform:translate(30%, -30%);"></div>
+            <div class="absolute bottom-0 left-0 w-80 h-80 rounded-full opacity-30 pointer-events-none"
+                style="background:radial-gradient(circle, rgba(255,198,65,0.25), transparent 70%); filter:blur(50px); transform:translate(-25%, 25%);"></div>
+
+            <div class="max-w-7xl mx-auto relative z-10">
                 <div class="text-center mb-16 space-y-4 reveal-item" data-delay="1">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-2"
+                        style="background:rgba(0,59,90,0.08); color:#003b5a; border:1px solid rgba(0,59,90,0.12);">
+                        <span class="material-symbols-outlined" style="font-size:1rem;">emoji_events</span>
+                        ميزاتنا التنافسية
+                    </div>
                     <h2 class="text-4xl md:text-5xl font-black text-primary">لماذا تختار معهد الرؤية؟</h2>
-                    <p class="text-on-surface-variant max-w-2xl mx-auto">نحن لا نقدم مجرد دورات، بل نصنع تجربة تعليمية
-                        متكاملة تهدف للتحول الحقيقي.</p>
+                    <p class="text-on-surface-variant max-w-2xl mx-auto">نحن لا نقدم مجرد دورات، بل نصنع تجربة تعليمية متكاملة تهدف للتحول الحقيقي.</p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[600px]">
+                    <!-- Main cell -->
                     <div class="md:col-span-2 md:row-span-2 bg-primary rounded-[2rem] p-10 text-white flex flex-col justify-end relative overflow-hidden group reveal-item shine-card"
                         data-delay="1">
+                        <!-- Glass shimmer overlay -->
+                        <div class="absolute inset-0 rounded-[2rem]"
+                            style="background:linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%); pointer-events:none;"></div>
                         <div class="absolute top-0 right-0 p-8">
                             <div class="icon-badge">
-                                <span class="material-symbols-outlined"
-                                    data-icon="workspace_premium">workspace_premium</span>
+                                <span class="material-symbols-outlined">workspace_premium</span>
                             </div>
                         </div>
+                        <div class="absolute bottom-24 right-10 opacity-10">
+                            <span class="material-symbols-outlined" style="font-size:8rem;">verified</span>
+                        </div>
                         <h3 class="text-3xl font-bold mb-4 relative z-10">اعتماد محلي ودولي</h3>
-                        <p class="text-primary-fixed opacity-80 relative z-10 leading-relaxed">شهاداتنا معترف بها من قبل
-                            الجهات الحكومية الكبرى والشركات العالمية، مما يمنحك ميزة تنافسية فورية في سيرتك الذاتية.</p>
+                        <p class="text-primary-fixed opacity-80 relative z-10 leading-relaxed">شهاداتنا معترف بها من قبل الجهات الحكومية الكبرى والشركات العالمية، مما يمنحك ميزة تنافسية فورية في سيرتك الذاتية.</p>
+                        <!-- Glass pill count -->
+                        <div class="mt-6 flex items-center gap-3 relative z-10">
+                            <div class="glass px-4 py-2 rounded-full flex items-center gap-2 text-sm">
+                                <span class="material-symbols-outlined text-secondary-container" style="font-size:1rem;">business</span>
+                                <span class="text-white/90">+50 جهة معترفة</span>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="bg-white rounded-[2rem] p-8 flex flex-col justify-between elevated-card reveal-item"
-                        data-delay="2">
+                    <!-- Cell 2 -->
+                    <div class="glass-card rounded-[2rem] p-8 flex flex-col justify-between reveal-item" data-delay="2">
                         <div class="icon-badge">
-                            <span class="material-symbols-outlined" data-icon="person_celebrate">person_celebrate</span>
+                            <span class="material-symbols-outlined">person_celebrate</span>
                         </div>
                         <div>
                             <h4 class="font-bold text-xl mb-2 text-primary">خبراء ممارسون</h4>
-                            <p class="text-sm text-on-surface-variant">مدربونا هم قادة في مجالاتهم ينقلون لك
-                                خبرة السوق الواقعية.</p>
+                            <p class="text-sm text-on-surface-variant">مدربونا هم قادة في مجالاتهم ينقلون لك خبرة السوق الواقعية.</p>
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-[2rem] p-8 flex flex-col justify-between elevated-card reveal-item"
-                        data-delay="3">
+                    <!-- Cell 3 -->
+                    <div class="glass-card rounded-[2rem] p-8 flex flex-col justify-between reveal-item" data-delay="3">
                         <div class="icon-badge">
-                            <span class="material-symbols-outlined" data-icon="devices">devices</span>
+                            <span class="material-symbols-outlined">devices</span>
                         </div>
                         <div>
                             <h4 class="font-bold text-xl mb-2 text-primary">تعليم مرن</h4>
-                            <p class="text-sm text-on-surface-variant">خيارات تدريب حضورية وعن بعد تناسب
-                                جدولك المهني.</p>
+                            <p class="text-sm text-on-surface-variant">خيارات تدريب حضورية وعن بعد تناسب جدولك المهني.</p>
                         </div>
                     </div>
 
-                    <div class="md:col-span-2 bg-surface-container-highest rounded-[2rem] p-8 flex items-center gap-6 overflow-hidden elevated-card reveal-item"
-                        data-delay="4">
+                    <!-- Cell 4 (wide) -->
+                    <div class="md:col-span-2 glass-card rounded-[2rem] p-8 flex items-center gap-6 overflow-hidden reveal-item" data-delay="4">
                         <div class="flex-1 space-y-3">
+                            <div class="icon-badge mb-4">
+                                <span class="material-symbols-outlined">hub</span>
+                            </div>
                             <h4 class="font-bold text-xl text-primary">بيئة تدريبية حديثة</h4>
-                            <p class="text-sm text-on-surface-variant">قاعات مجهزة بأحدث التقنيات لضمان أفضل تجربة
-                                تفاعلية.</p>
+                            <p class="text-sm text-on-surface-variant">قاعات مجهزة بأحدث التقنيات لضمان أفضل تجربة تفاعلية.</p>
                         </div>
                         <img alt="Training lab"
-                            class="w-32 h-32 rounded-2xl object-cover transition-all duration-500 hover:scale-105 hover:rotate-2"
+                            class="w-36 h-36 rounded-2xl object-cover transition-all duration-500 hover:scale-105 hover:rotate-2 shadow-lg flex-shrink-0"
                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe1FX8yIWRX3cTNB-TPTvtcLy45dEl-hksXWYGch3V-hHOoDPA_p1Whp6nwE2TAvqzGwsa7KVq7y9XkTV8Szxp7X7Sa2nEPUIyOhwOfKv4sXbKH6NrZsvuwfq5uaC2GW4peJbV9y8wPq53B-MjYDZslajvTD08AX6FI4S2kRV9Rnbd1TCEA9gETsHE-bmM9UomrjTYbc_7Q9hfOU-Uz0HQf5HoGM0kk48ONdmy84xYv4lobBo9MLau5YBANFHWwiuhqBEVD3-4xOY" />
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Success Stories -->
-        <section class="py-24 px-6 bg-surface overflow-hidden" id="stories">
+        <!-- ═══ SUCCESS STORIES ═══ -->
+        <section class="py-24 px-6 bg-surface overflow-hidden section-reveal" id="stories">
             <div class="max-w-7xl mx-auto">
-                <h2 class="text-4xl font-black text-primary mb-16 text-center">قصص نجاح من قلب المعهد</h2>
+                <div class="text-center mb-16 reveal-item" data-delay="1">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4"
+                        style="background:rgba(0,59,90,0.08); color:#003b5a; border:1px solid rgba(0,59,90,0.12);">
+                        <span class="material-symbols-outlined" style="font-size:1rem;">format_quote</span>
+                        شهادات خريجينا
+                    </div>
+                    <h2 class="text-4xl font-black text-primary">قصص نجاح من قلب المعهد</h2>
+                </div>
                 <div class="flex flex-col md:flex-row gap-8">
-                    <div
-                        class="flex-1 bg-surface-container-lowest border-r-4 border-secondary p-10 rounded-2xl shadow-sm italic relative">
-                        <span class="material-symbols-outlined absolute -top-4 -right-4 text-6xl text-secondary/20"
-                            data-icon="format_quote">format_quote</span>
-                        <p class="text-on-surface text-lg leading-relaxed mb-6">"بفضل برنامج إدارة المشاريع في معهد
-                            الرؤية، تمكنت من
-                            الحصول على ترقية استثنائية في شركتي. المنهج العملي كان مفتاح التحول في مساري المهني."</p>
-                        <div class="flex items-center gap-4 not-italic">
-                            <div class="w-12 h-12 rounded-full bg-slate-200"></div>
+                    <!-- Story 1 -->
+                    <div class="testimonial-glass flex-1 rounded-2xl p-10 relative story-card reveal-item" data-delay="2">
+                        <div class="absolute top-0 right-0 w-1 h-16 rounded-full bg-gradient-to-b from-amber-400 to-amber-200" style="right:0; top:2rem; width:4px; border-radius:0 0.5rem 0.5rem 0;"></div>
+                        <span class="material-symbols-outlined absolute -top-4 right-6 text-amber-300"
+                            style="font-size:4rem; opacity:0.4;">format_quote</span>
+                        <p class="text-on-surface text-lg leading-relaxed mb-6 italic">
+                            "بفضل برنامج إدارة المشاريع في معهد الرؤية، تمكنت من الحصول على ترقية استثنائية في شركتي. المنهج العملي كان مفتاح التحول في مساري المهني."
+                        </p>
+                        <div class="flex items-center gap-4 not-italic border-t pt-6" style="border-color:rgba(0,59,90,0.1);">
+                            <div class="avatar-ring">
+                                <div class="avatar-inner">أ.ق</div>
+                            </div>
                             <div>
                                 <p class="font-bold text-primary">م. أحمد القحطاني</p>
-                                <p class="text-sm text-on-surface-variant">مدير عمليات</p>
+                                <p class="text-sm text-on-surface-variant">مدير عمليات · أرامكو السعودية</p>
                             </div>
+                            <div class="mr-auto text-amber-400 text-sm tracking-wider">⭐⭐⭐⭐⭐</div>
                         </div>
                     </div>
-                    <div
-                        class="flex-1 bg-surface-container-lowest border-r-4 border-secondary p-10 rounded-2xl shadow-sm italic relative">
-                        <span class="material-symbols-outlined absolute -top-4 -right-4 text-6xl text-secondary/20"
-                            data-icon="format_quote">format_quote</span>
-                        <p class="text-on-surface text-lg leading-relaxed mb-6">"التدريب لم يكن مجرد دروس نظرية، بل
-                            تجارب عملية غيرت
-                            طريقتي في التفكير التقني. اليوم أعمل كأخصائية أمن سيبراني في إحدى الجهات الحكومية."</p>
-                        <div class="flex items-center gap-4 not-italic">
-                            <div class="w-12 h-12 rounded-full bg-slate-200"></div>
+
+                    <!-- Story 2 -->
+                    <div class="testimonial-glass flex-1 rounded-2xl p-10 relative story-card reveal-item" data-delay="3">
+                        <div class="absolute top-0 right-0 w-1 h-16 rounded-full bg-gradient-to-b from-amber-400 to-amber-200" style="right:0; top:2rem; width:4px; border-radius:0 0.5rem 0.5rem 0;"></div>
+                        <span class="material-symbols-outlined absolute -top-4 right-6 text-amber-300"
+                            style="font-size:4rem; opacity:0.4;">format_quote</span>
+                        <p class="text-on-surface text-lg leading-relaxed mb-6 italic">
+                            "التدريب لم يكن مجرد دروس نظرية، بل تجارب عملية غيرت طريقتي في التفكير التقني. اليوم أعمل كأخصائية أمن سيبراني في إحدى الجهات الحكومية."
+                        </p>
+                        <div class="flex items-center gap-4 not-italic border-t pt-6" style="border-color:rgba(0,59,90,0.1);">
+                            <div class="avatar-ring">
+                                <div class="avatar-inner">س.ش</div>
+                            </div>
                             <div>
                                 <p class="font-bold text-primary">سارة الشمري</p>
-                                <p class="text-sm text-on-surface-variant">أخصائية أمن معلومات</p>
+                                <p class="text-sm text-on-surface-variant">أخصائية أمن معلومات · وزارة الداخلية</p>
                             </div>
+                            <div class="mr-auto text-amber-400 text-sm tracking-wider">⭐⭐⭐⭐⭐</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- Registration Form Section -->
-        <section class="py-24 px-6 bg-primary relative overflow-hidden" id="register">
-            <!-- Decorative circle -->
-            <div class="absolute -top-24 -left-24 w-96 h-96 bg-secondary opacity-10 rounded-full blur-[100px]"></div>
-            <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
-                <div class="text-right text-white space-y-6">
+
+        <!-- ═══ REGISTRATION FORM ═══ -->
+        <section class="py-24 px-6 register-section relative overflow-hidden section-reveal" id="register">
+            <!-- Aurora rings -->
+            <div class="aurora">
+                <div class="aurora-ring aurora-ring-1"></div>
+                <div class="aurora-ring aurora-ring-2"></div>
+            </div>
+            <!-- Grid overlay -->
+            <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:50px 50px;pointer-events:none;opacity:0.5;"></div>
+
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center relative z-10">
+                <!-- Left: info -->
+                <div class="text-right text-white space-y-6 reveal-item" data-delay="1">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider"
+                        style="background:rgba(255,198,65,0.18); color:#ffc641; border:1px solid rgba(255,198,65,0.3);">
+                        <span class="material-symbols-outlined" style="font-size:1rem;">rocket_launch</span>
+                        ابدأ رحلتك
+                    </div>
                     <h2 class="text-4xl md:text-5xl font-black leading-tight">ابدأ رحلة التميز اليوم</h2>
-                    <p class="text-primary-fixed opacity-90 text-lg">سجل بياناتك الآن وسيتواصل معك مستشارونا التعليميون
-                        لمساعدتك
-                        في اختيار البرنامج الأنسب لمستقبلك.</p>
-                    <ul class="space-y-4 pt-4">
-                        <li class="flex items-center gap-3 justify-end">
-                            <span>استشارة مهنية مجانية</span>
-                            <span class="material-symbols-outlined text-secondary" data-icon="check_circle"
-                                style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    <p class="text-white/80 text-lg">سجل بياناتك الآن وسيتواصل معك مستشارونا التعليميون لمساعدتك في اختيار البرنامج الأنسب لمستقبلك.</p>
+
+                    <ul class="space-y-5 pt-4">
+                        <li class="benefit-item">
+                            <span class="text-white/90">استشارة مهنية مجانية</span>
+                            <div class="benefit-check">
+                                <span class="material-symbols-outlined text-amber-400" style="font-size:1.1rem; font-variation-settings:'FILL' 1;">check</span>
+                            </div>
                         </li>
-                        <li class="flex items-center gap-3 justify-end">
-                            <span>خطط دفع ميسرة</span>
-                            <span class="material-symbols-outlined text-secondary" data-icon="check_circle"
-                                style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        <li class="benefit-item">
+                            <span class="text-white/90">خطط دفع ميسرة تناسبك</span>
+                            <div class="benefit-check">
+                                <span class="material-symbols-outlined text-amber-400" style="font-size:1.1rem; font-variation-settings:'FILL' 1;">check</span>
+                            </div>
                         </li>
-                        <li class="flex items-center gap-3 justify-end">
-                            <span>أولوية الحضور في ورش العمل</span>
-                            <span class="material-symbols-outlined text-secondary" data-icon="check_circle"
-                                style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        <li class="benefit-item">
+                            <span class="text-white/90">أولوية الحضور في ورش العمل</span>
+                            <div class="benefit-check">
+                                <span class="material-symbols-outlined text-amber-400" style="font-size:1.1rem; font-variation-settings:'FILL' 1;">check</span>
+                            </div>
+                        </li>
+                        <li class="benefit-item">
+                            <span class="text-white/90">شهادة اجتياز معتمدة دولياً</span>
+                            <div class="benefit-check">
+                                <span class="material-symbols-outlined text-amber-400" style="font-size:1.1rem; font-variation-settings:'FILL' 1;">check</span>
+                            </div>
                         </li>
                     </ul>
+
+                    <!-- Trust badges -->
+                    <div class="flex flex-wrap gap-3 pt-4">
+                        <div class="glass px-4 py-2.5 rounded-xl flex items-center gap-2 text-sm" style="border-color:rgba(255,255,255,0.2);">
+                            <span class="material-symbols-outlined text-amber-400" style="font-size:1.1rem;">lock</span>
+                            <span class="text-white/80">بياناتك آمنة 100%</span>
+                        </div>
+                        <div class="glass px-4 py-2.5 rounded-xl flex items-center gap-2 text-sm" style="border-color:rgba(255,255,255,0.2);">
+                            <span class="material-symbols-outlined text-amber-400" style="font-size:1.1rem;">support_agent</span>
+                            <span class="text-white/80">رد خلال 24 ساعة</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-white rounded-[2.5rem] p-10 shadow-2xl">
-                    <form class="space-y-6">
-                        <div class="space-y-2">
-                            <label class="block text-sm font-label font-bold text-primary">الاسم الكامل</label>
-                            <input
-                                class="w-full bg-surface-container-low border-none rounded-xl p-4 focus:ring-2 focus:ring-secondary transition-all"
-                                placeholder="أدخل اسمك الثلاثي" type="text" />
+
+                <!-- Right: form -->
+                <div class="form-glass-wrap p-8 md:p-10 reveal-item" data-delay="2">
+                    <!-- Form header -->
+                    <div class="text-center mb-8">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4"
+                            style="background:rgba(255,198,65,0.18); border:1px solid rgba(255,198,65,0.3);">
+                            <span class="material-symbols-outlined text-amber-400" style="font-size:2rem;">edit_note</span>
                         </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="space-y-2">
-                                <label class="block text-sm font-label font-bold text-primary">البريد الإلكتروني</label>
-                                <input
-                                    class="w-full bg-surface-container-low border-none rounded-xl p-4 focus:ring-2 focus:ring-secondary transition-all"
-                                    placeholder="example@mail.com" type="email" />
+                        <h3 class="text-xl font-bold text-white mb-1">سجّل اهتمامك الآن</h3>
+                        <p class="text-white/50 text-sm">يستغرق ملء النموذج دقيقة واحدة فقط</p>
+                    </div>
+
+                    <form class="space-y-5" id="registerForm" novalidate>
+                        <!-- Full Name -->
+                        <div class="form-field">
+                            <span class="form-field-icon material-symbols-outlined">person</span>
+                            <input class="form-input" style="padding-right:3rem;" id="fullName" type="text" placeholder="أدخل اسمك الثلاثي" />
+                            <label for="fullName">الاسم الكامل</label>
+                        </div>
+
+                        <!-- Email & Phone (side by side) -->
+                        <div class="grid grid-cols-1 gap-4" style="grid-template-columns:1fr 1fr;">
+                            <div class="form-field">
+                                <span class="form-field-icon material-symbols-outlined">mail</span>
+                                <input class="form-input" style="padding-right:3rem;" id="email" type="email" placeholder="example@mail.com" />
+                                <label for="email">البريد الإلكتروني</label>
                             </div>
-                            <div class="space-y-2">
-                                <label class="block text-sm font-label font-bold text-primary">رقم الجوال</label>
-                                <input
-                                    class="w-full bg-surface-container-low border-none rounded-xl p-4 focus:ring-2 focus:ring-secondary transition-all text-left"
-                                    dir="ltr" placeholder="05xxxxxxxx" type="tel" />
+                            <div class="form-field">
+                                <span class="form-field-icon material-symbols-outlined">smartphone</span>
+                                <input class="form-input" style="padding-right:3rem;" id="phone" type="tel" placeholder="05xxxxxxxx" dir="ltr" />
+                                <label for="phone">رقم الجوال</label>
                             </div>
                         </div>
-                        <div class="space-y-2">
-                            <label class="block text-sm font-label font-bold text-primary">البرنامج المفضل</label>
-                            <select
-                                class="w-full bg-surface-container-low border-none rounded-xl p-4 focus:ring-2 focus:ring-secondary transition-all appearance-none">
-                                <option>اختر البرنامج التدريبي</option>
+
+                        <!-- Program select -->
+                        <div class="form-field">
+                            <span class="form-field-icon material-symbols-outlined">school</span>
+                            <select class="form-input" style="padding-right:3rem; cursor:pointer;" id="program">
+                                <option value="" disabled selected hidden></option>
                                 <option>الأمن السيبراني المتقدم</option>
                                 <option>إدارة المشاريع الإحترافية</option>
-                                <option>تحليل البيانات</option>
+                                <option>تحليل البيانات والذكاء الاصطناعي</option>
                                 <option>القيادة الإدارية</option>
                             </select>
+                            <label for="program">البرنامج المفضل</label>
                         </div>
-                        <div class="space-y-2">
-                            <label class="block text-sm font-label font-bold text-primary">الرسالة (اختياري)</label>
-                            <textarea
-                                class="w-full bg-surface-container-low border-none rounded-xl p-4 focus:ring-2 focus:ring-secondary transition-all"
-                                placeholder="كيف يمكننا مساعدتك؟" rows="3"></textarea>
+
+                        <!-- Preferred mode -->
+                        <div class="mt-2">
+                            <p class="text-white/60 text-xs font-bold uppercase tracking-wider mb-3 text-right">طريقة التدريب المفضلة</p>
+                            <div class="flex gap-3">
+                                <label class="flex-1 cursor-pointer">
+                                    <input type="radio" name="mode" value="onsite" class="sr-only peer" checked />
+                                    <div class="text-center py-2.5 px-3 rounded-xl border text-white/60 text-sm font-bold transition-all peer-checked:text-amber-400 peer-checked:border-amber-400/60 peer-checked:bg-amber-400/10"
+                                        style="border-color:rgba(255,255,255,0.15);">
+                                        <span class="material-symbols-outlined block mb-1" style="font-size:1.2rem;">corporate_fare</span>
+                                        حضوري
+                                    </div>
+                                </label>
+                                <label class="flex-1 cursor-pointer">
+                                    <input type="radio" name="mode" value="online" class="sr-only peer" />
+                                    <div class="text-center py-2.5 px-3 rounded-xl border text-white/60 text-sm font-bold transition-all peer-checked:text-amber-400 peer-checked:border-amber-400/60 peer-checked:bg-amber-400/10"
+                                        style="border-color:rgba(255,255,255,0.15);">
+                                        <span class="material-symbols-outlined block mb-1" style="font-size:1.2rem;">laptop_mac</span>
+                                        عن بعد
+                                    </div>
+                                </label>
+                                <label class="flex-1 cursor-pointer">
+                                    <input type="radio" name="mode" value="hybrid" class="sr-only peer" />
+                                    <div class="text-center py-2.5 px-3 rounded-xl border text-white/60 text-sm font-bold transition-all peer-checked:text-amber-400 peer-checked:border-amber-400/60 peer-checked:bg-amber-400/10"
+                                        style="border-color:rgba(255,255,255,0.15);">
+                                        <span class="material-symbols-outlined block mb-1" style="font-size:1.2rem;">sync_alt</span>
+                                        هجين
+                                    </div>
+                                </label>
+                            </div>
                         </div>
-                        <button
-                            class="w-full bg-secondary-container hover:bg-amber-400 text-on-secondary-container py-4 rounded-xl font-black text-lg transition-all active:scale-95"
-                            type="submit">
-                            إرسال طلب التسجيل
+
+                        <!-- Message -->
+                        <div class="form-field">
+                            <span class="form-field-icon material-symbols-outlined" style="top:1.4rem; transform:none;">chat</span>
+                            <textarea class="form-input" style="padding-right:3rem; resize:none;" id="message" placeholder="كيف يمكننا مساعدتك؟" rows="3"></textarea>
+                            <label for="message">الرسالة (اختياري)</label>
+                        </div>
+
+                        <!-- Submit -->
+                        <button class="submit-btn" type="submit" id="submitBtn">
+                            <span class="flex items-center justify-center gap-3">
+                                <span class="material-symbols-outlined" style="font-size:1.3rem;">send</span>
+                                إرسال طلب التسجيل
+                            </span>
                         </button>
+
+                        <p class="text-white/35 text-xs text-center pt-1">بالضغط على إرسال توافق على <a href="#" class="underline hover:text-white/60 transition-colors">شروط الخدمة</a> وسياسة الخصوصية</p>
                     </form>
                 </div>
             </div>
         </section>
-        <!-- FAQ Section -->
-        <section class="py-24 px-6 bg-surface">
+
+        <!-- ═══ FAQ ═══ -->
+        <section class="py-24 px-6 bg-surface section-reveal">
             <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-black text-primary mb-12 text-center">الأسئلة الشائعة</h2>
-                <div class="space-y-4">
-                    <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm">
-                        <div class="flex justify-between items-center cursor-pointer">
-                            <span class="material-symbols-outlined text-secondary" data-icon="add">add</span>
-                            <h4 class="font-bold text-primary">هل الشهادات معتمدة من المؤسسة العامة للتدريب التقني
-                                والمهني؟</h4>
+                <div class="text-center mb-12 reveal-item" data-delay="1">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-4"
+                        style="background:rgba(0,59,90,0.08); color:#003b5a; border:1px solid rgba(0,59,90,0.12);">
+                        <span class="material-symbols-outlined" style="font-size:1rem;">help</span>
+                        لديك سؤال؟
+                    </div>
+                    <h2 class="text-3xl font-black text-primary">الأسئلة الشائعة</h2>
+                </div>
+                <div class="space-y-4" id="faqList">
+
+                    <!-- FAQ 1 -->
+                    <div class="faq-card rounded-2xl p-6 reveal-item" data-delay="2">
+                        <button class="faq-trigger w-full text-right" aria-expanded="false">
+                            <h4 class="font-bold text-primary flex-1">هل الشهادات معتمدة من المؤسسة العامة للتدريب التقني والمهني؟</h4>
+                            <div class="faq-icon"><span class="material-symbols-outlined">add</span></div>
+                        </button>
+                        <div class="faq-body" role="region">
+                            <div class="faq-body-inner">
+                                <div class="faq-answer">
+                                    نعم، جميع برامجنا معتمدة من المؤسسة العامة للتدريب التقني والمهني (TVTC)، فضلاً عن اعتمادات دولية من هيئات عالمية مرموقة مثل PMI وCISA وغيرها، مما يضمن قيمة شهادتك على الصعيدين المحلي والعالمي.
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm">
-                        <div class="flex justify-between items-center cursor-pointer">
-                            <span class="material-symbols-outlined text-secondary" data-icon="add">add</span>
-                            <h4 class="font-bold text-primary">هل يوجد نظام تقسيط لرسوم البرامج التدريبية؟</h4>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-card rounded-2xl p-6 reveal-item" data-delay="3">
+                        <button class="faq-trigger w-full text-right" aria-expanded="false">
+                            <h4 class="font-bold text-primary flex-1">هل يوجد نظام تقسيط لرسوم البرامج التدريبية؟</h4>
+                            <div class="faq-icon"><span class="material-symbols-outlined">add</span></div>
+                        </button>
+                        <div class="faq-body" role="region">
+                            <div class="faq-body-inner">
+                                <div class="faq-answer">
+                                    بالتأكيد! نوفر خطط دفع مرنة تتيح لك تقسيم الرسوم على دفعات شهرية ميسّرة دون أي فوائد. كما نقدم خصومات خاصة للتسجيل المبكر وللمجموعات المؤسسية.
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm">
-                        <div class="flex justify-between items-center cursor-pointer">
-                            <span class="material-symbols-outlined text-secondary" data-icon="add">add</span>
-                            <h4 class="font-bold text-primary">ما هي متطلبات القبول في البرامج المتقدمة؟</h4>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-card rounded-2xl p-6 reveal-item" data-delay="4">
+                        <button class="faq-trigger w-full text-right" aria-expanded="false">
+                            <h4 class="font-bold text-primary flex-1">ما هي متطلبات القبول في البرامج المتقدمة؟</h4>
+                            <div class="faq-icon"><span class="material-symbols-outlined">add</span></div>
+                        </button>
+                        <div class="faq-body" role="region">
+                            <div class="faq-body-inner">
+                                <div class="faq-answer">
+                                    تختلف المتطلبات بحسب البرنامج؛ إذ تشترط بعض البرامج المتقدمة مثل الأمن السيبراني خبرة تقنية مسبقة لا تقل عن سنة، في حين لا تشترط برامج أخرى أي خلفية سابقة. يُنصح بالتواصل مع مستشارينا لتحديد المسار المناسب لك.
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-card rounded-2xl p-6 reveal-item" data-delay="5">
+                        <button class="faq-trigger w-full text-right" aria-expanded="false">
+                            <h4 class="font-bold text-primary flex-1">كم تستغرق مدة التسجيل قبل بداية البرنامج؟</h4>
+                            <div class="faq-icon"><span class="material-symbols-outlined">add</span></div>
+                        </button>
+                        <div class="faq-body" role="region">
+                            <div class="faq-body-inner">
+                                <div class="faq-answer">
+                                    تستغرق عملية التسجيل عادةً من 24 إلى 48 ساعة عمل فقط. بمجرد إرسال طلبك، سيتواصل معك أحد مستشارينا لاستكمال الإجراءات وتأكيد مقعدك في البرنامج المختار.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
     </main>
-    <!-- Footer -->
-    <footer class="bg-sky-950 dark:bg-black w-full pt-16 pb-8 border-t-0">
-        <div class="rtl grid grid-cols-1 md:grid-cols-4 gap-12 px-10 max-w-7xl mx-auto">
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer class="bg-sky-950 dark:bg-black w-full pt-16 pb-8 border-t-0 relative overflow-hidden">
+        <!-- Subtle glass highlight line -->
+        <div class="absolute top-0 left-0 right-0 h-px" style="background:linear-gradient(90deg, transparent, rgba(255,198,65,0.4), transparent);"></div>
+        <!-- Background glow -->
+        <div class="absolute top-0 right-0 w-96 h-96 opacity-10 pointer-events-none" style="background:radial-gradient(circle, #ffc641, transparent 70%); filter:blur(80px); transform:translate(30%,-40%);"></div>
+
+        <div class="rtl grid grid-cols-1 md:grid-cols-4 gap-12 px-10 max-w-7xl mx-auto relative z-10">
             <div class="space-y-6 md:col-span-1">
                 <div class="flex items-center gap-3">
-                    <span class="material-symbols-outlined text-3xl text-amber-500" data-icon="school">school</span>
+                    <span class="material-symbols-outlined text-3xl text-amber-500">school</span>
                     <span class="text-xl font-bold text-white">معهد رؤية</span>
                 </div>
-                <p class="text-slate-300 text-sm leading-relaxed">منصة تعليمية رائدة تهدف إلى تمكين الكوادر الوطنية
-                    بالمهارات
-                    اللازمة للمنافسة العالمية والتميز المهني.</p>
+                <p class="text-slate-300 text-sm leading-relaxed">منصة تعليمية رائدة تهدف إلى تمكين الكوادر الوطنية بالمهارات اللازمة للمنافسة العالمية والتميز المهني.</p>
                 <div class="flex gap-4">
-                    <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary transition-colors"
+                    <a class="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                        style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12);"
                         href="#">
-                        <span class="material-symbols-outlined text-white text-xl" data-icon="share">share</span>
+                        <span class="material-symbols-outlined text-white text-xl">share</span>
                     </a>
-                    <a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary transition-colors"
+                    <a class="w-10 h-10 rounded-full flex items-center justify-center transition-all hover:scale-110"
+                        style="background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12);"
                         href="#">
-                        <span class="material-symbols-outlined text-white text-xl" data-icon="public">public</span>
+                        <span class="material-symbols-outlined text-white text-xl">public</span>
                     </a>
                 </div>
             </div>
             <div class="space-y-6">
                 <h5 class="text-white font-bold border-r-2 border-secondary pr-3">روابط سريعة</h5>
                 <ul class="space-y-4 text-slate-300 text-sm">
-                    <li><a class="hover:text-white hover:translate-x-[-4px] transition-transform duration-300 inline-block"
-                            href="#">الرئيسية</a></li>
-                    <li><a class="hover:text-white hover:translate-x-[-4px] transition-transform duration-300 inline-block"
-                            href="#programs">البرامج التدريبية</a></li>
-                    <li><a class="hover:text-white hover:translate-x-[-4px] transition-transform duration-300 inline-block"
-                            href="#why-us">عن المعهد</a></li>
-                    <li><a class="hover:text-white hover:translate-x-[-4px] transition-transform duration-300 inline-block"
-                            href="#">اتصل بنا</a></li>
+                    <li><a class="hover:text-white hover:translate-x-[-4px] transition-transform duration-300 inline-block" href="#">الرئيسية</a></li>
+                    <li><a class="hover:text-white hover:translate-x-[-4px] transition-transform duration-300 inline-block" href="#programs">البرامج التدريبية</a></li>
+                    <li><a class="hover:text-white hover:translate-x-[-4px] transition-transform duration-300 inline-block" href="#why-us">عن المعهد</a></li>
+                    <li><a class="hover:text-white hover:translate-x-[-4px] transition-transform duration-300 inline-block" href="#">اتصل بنا</a></li>
                 </ul>
             </div>
             <div class="space-y-6">
                 <h5 class="text-white font-bold border-r-2 border-secondary pr-3">البرامج الأكثر طلباً</h5>
                 <ul class="space-y-4 text-slate-300 text-sm">
-                    <li>الأمن السيبراني</li>
-                    <li>إدارة المشاريع</li>
-                    <li>الذكاء الاصطناعي</li>
-                    <li>مهارات القيادة</li>
+                    <li class="hover:text-white transition-colors cursor-pointer">الأمن السيبراني</li>
+                    <li class="hover:text-white transition-colors cursor-pointer">إدارة المشاريع</li>
+                    <li class="hover:text-white transition-colors cursor-pointer">الذكاء الاصطناعي</li>
+                    <li class="hover:text-white transition-colors cursor-pointer">مهارات القيادة</li>
                 </ul>
             </div>
             <div class="space-y-6">
@@ -1010,16 +1286,15 @@
                 <div class="space-y-4 text-slate-300 text-sm">
                     <div class="flex items-start gap-3 justify-end">
                         <span>الرياض، حي الملقا، طريق الملك فهد</span>
-                        <span class="material-symbols-outlined text-amber-500"
-                            data-icon="location_on">location_on</span>
+                        <span class="material-symbols-outlined text-amber-500">location_on</span>
                     </div>
                     <div class="flex items-center gap-3 justify-end">
                         <span>92000XXXX</span>
-                        <span class="material-symbols-outlined text-amber-500" data-icon="phone">phone</span>
+                        <span class="material-symbols-outlined text-amber-500">phone</span>
                     </div>
                     <div class="flex items-center gap-3 justify-end">
                         <span>info@tivi.edu.sa</span>
-                        <span class="material-symbols-outlined text-amber-500" data-icon="mail">mail</span>
+                        <span class="material-symbols-outlined text-amber-500">mail</span>
                     </div>
                 </div>
             </div>
@@ -1031,8 +1306,9 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const revealElements = document.querySelectorAll('.section-reveal, .reveal-item');
 
+            // ─── Scroll reveal ───
+            const revealElements = document.querySelectorAll('.section-reveal, .reveal-item');
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
@@ -1040,51 +1316,148 @@
                         observer.unobserve(entry.target);
                     }
                 });
-            }, {
-                threshold: 0.12,
-                rootMargin: '0px 0px -40px 0px'
-            });
-
+            }, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
             revealElements.forEach((el) => observer.observe(el));
 
+            // ─── Parallax ───
             const hero = document.querySelector('.hero-gradient');
             const parallaxLayers = document.querySelectorAll('.parallax-layer');
-
             if (hero && parallaxLayers.length) {
                 hero.addEventListener('mousemove', (e) => {
                     const rect = hero.getBoundingClientRect();
                     const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
                     const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
-
                     parallaxLayers.forEach((layer) => {
                         const speed = parseFloat(layer.dataset.speed || 6);
-                        const tx = x * speed;
-                        const ty = y * speed;
-                        layer.style.transform = `translate3d(${tx}px, ${ty}px, 0)`;
+                        layer.style.transform = `translate3d(${x * speed}px, ${y * speed}px, 0)`;
                     });
                 });
-
                 hero.addEventListener('mouseleave', () => {
-                    parallaxLayers.forEach((layer) => {
-                        layer.style.transform = 'translate3d(0,0,0)';
-                    });
+                    parallaxLayers.forEach((layer) => { layer.style.transform = 'translate3d(0,0,0)'; });
                 });
             }
 
+            // ─── Header scroll ───
             const header = document.querySelector('header');
             window.addEventListener('scroll', () => {
                 if (!header) return;
                 if (window.scrollY > 20) {
                     header.classList.add('shadow-lg');
-                    header.style.backgroundColor = 'rgba(247,250,252,0.82)';
+                    header.style.backgroundColor = 'rgba(247,250,252,0.88)';
                 } else {
                     header.classList.remove('shadow-lg');
-                    header.style.backgroundColor = 'rgba(247,250,252,0.7)';
+                    header.style.backgroundColor = 'rgba(247,250,252,0.72)';
                 }
             });
+
+            // ─── Floating particles in hero ───
+            const particlesContainer = document.getElementById('heroParticles');
+            if (particlesContainer) {
+                for (let i = 0; i < 22; i++) {
+                    const p = document.createElement('div');
+                    p.className = 'particle';
+                    const size = Math.random() * 4 + 2;
+                    p.style.cssText = `
+                        width:${size}px; height:${size}px;
+                        left:${Math.random() * 100}%;
+                        bottom:${Math.random() * 30}%;
+                        --drift-x:${(Math.random() - 0.5) * 60}px;
+                        animation-duration:${Math.random() * 12 + 8}s;
+                        animation-delay:${Math.random() * 10}s;
+                        opacity:0;
+                    `;
+                    particlesContainer.appendChild(p);
+                }
+            }
+
+            // ─── Animated stat numbers ───
+            const statNums = document.querySelectorAll('.stat-number');
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'countUp .7s var(--ease-smooth) both';
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            statNums.forEach(el => statsObserver.observe(el));
+
+            // ─── Form: floating-label select fix ───
+            document.querySelectorAll('select.form-input').forEach(sel => {
+                sel.addEventListener('change', () => {
+                    sel.classList.toggle('has-value', sel.value !== '');
+                });
+            });
+
+            // ─── Form submit ripple ───
+            const submitBtn = document.getElementById('submitBtn');
+            const form = document.getElementById('registerForm');
+            if (form && submitBtn) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    submitBtn.disabled = true;
+                    const original = submitBtn.innerHTML;
+                    submitBtn.innerHTML = `
+                        <span class="flex items-center justify-center gap-3">
+                            <span class="material-symbols-outlined" style="font-size:1.3rem; animation:spin 1s linear infinite;">progress_activity</span>
+                            جارٍ الإرسال…
+                        </span>`;
+                    setTimeout(() => {
+                        submitBtn.innerHTML = `
+                            <span class="flex items-center justify-center gap-3">
+                                <span class="material-symbols-outlined" style="font-size:1.3rem; font-variation-settings:'FILL' 1;">check_circle</span>
+                                تم الإرسال بنجاح!
+                            </span>`;
+                        submitBtn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
+                    }, 1800);
+                });
+            }
+
+            // ─── Card tilt effect ───
+            document.querySelectorAll('.program-card').forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = (e.clientX - rect.left) / rect.width - 0.5;
+                    const y = (e.clientY - rect.top) / rect.height - 0.5;
+                    card.style.transform = `perspective(800px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-10px) scale(1.01)`;
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                });
+            });
+
+            // ─── FAQ Accordion ───
+            const faqCards = document.querySelectorAll('#faqList .faq-card');
+            faqCards.forEach(card => {
+                const trigger = card.querySelector('.faq-trigger');
+                const body    = card.querySelector('.faq-body');
+                if (!trigger || !body) return;
+
+                trigger.addEventListener('click', () => {
+                    const isOpen = card.classList.contains('open');
+
+                    // Close all
+                    faqCards.forEach(c => {
+                        c.classList.remove('open');
+                        c.querySelector('.faq-body').classList.remove('open');
+                        c.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+                    });
+
+                    // Open clicked (unless it was already open)
+                    if (!isOpen) {
+                        card.classList.add('open');
+                        body.classList.add('open');
+                        trigger.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
         });
+
+        // ─── CSS spin for loading ───
+        const style = document.createElement('style');
+        style.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
+        document.head.appendChild(style);
     </script>
 
 </body>
-
 </html>
