@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" dir="rtl" lang="ar">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>شكراً لتسجيلك - معهد الرؤية للتدريب</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600&display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100dvh;
+            background:
+                radial-gradient(circle at top right, rgba(255, 198, 65, 0.22), transparent 24%),
+                radial-gradient(circle at bottom left, rgba(146, 204, 255, 0.22), transparent 28%),
+                linear-gradient(135deg, #032f49 0%, #0b4d72 55%, #1a5276 100%);
+            overflow: hidden;
+        }
+
+        h1, h2 {
+            font-family: 'Manrope', sans-serif;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.14);
+            backdrop-filter: blur(26px);
+            -webkit-backdrop-filter: blur(26px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 30px 80px rgba(0, 20, 50, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.26);
+        }
+
+        .glow-ring {
+            box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.05), 0 20px 50px rgba(255, 198, 65, 0.28);
+        }
+    </style>
+</head>
+
+<body class="text-white">
+    <main class="min-h-screen flex items-center justify-center px-6 py-10">
+        <section class="glass-panel w-full max-w-3xl rounded-[2rem] p-8 md:p-12 text-center relative overflow-hidden">
+            <div class="absolute -top-20 -left-16 w-56 h-56 rounded-full bg-amber-300/20 blur-3xl"></div>
+            <div class="absolute -bottom-20 -right-10 w-64 h-64 rounded-full bg-sky-300/20 blur-3xl"></div>
+
+            <div class="relative z-10">
+                <div class="mx-auto mb-6 flex h-24 w-24 items-center justify-center rounded-[1.75rem] bg-white/10 glow-ring">
+                    <span class="material-symbols-outlined text-amber-300" style="font-size:3rem; font-variation-settings:'FILL' 1, 'wght' 700, 'GRAD' 150, 'opsz' 48;">check_circle</span>
+                </div>
+
+                <p class="mb-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm text-white/80">
+                    <span class="material-symbols-outlined text-amber-300" style="font-size:1.1rem;">mark_email_read</span>
+                    تم استلام طلب التسجيل بنجاح
+                </p>
+
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">شكراً لتسجيلك</h1>
+                <p class="mx-auto max-w-2xl text-base md:text-lg leading-8 text-white/80 mb-8">
+                    وصلتنا بياناتك، وسيتواصل معك فريق معهد الرؤية للتدريب قريباً لمساعدتك في اختيار البرنامج المناسب واستكمال خطوات التسجيل.
+                </p>
+
+                <div class="grid gap-4 md:grid-cols-3 text-right mb-8">
+                    <div class="rounded-2xl border border-white/10 bg-white/10 p-5">
+                        <p class="text-sm text-white/60 mb-2">الخطوة التالية</p>
+                        <p class="font-semibold leading-7">مراجعة بياناتك من قبل فريق القبول.</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-white/10 p-5">
+                        <p class="text-sm text-white/60 mb-2">زمن التواصل</p>
+                        <p class="font-semibold leading-7">خلال وقت قصير لتأكيد البرنامج المناسب لك.</p>
+                    </div>
+                    <div class="rounded-2xl border border-white/10 bg-white/10 p-5">
+                        <p class="text-sm text-white/60 mb-2">الدعم</p>
+                        <p class="font-semibold leading-7">إجابة على استفساراتك حول البرامج وآلية التسجيل.</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a class="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-400 px-7 py-3 font-bold text-slate-900 transition hover:-translate-y-0.5 hover:bg-amber-300"
+                        href="index.html">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                        العودة إلى الرئيسية
+                    </a>
+                    <a class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/10 px-7 py-3 font-semibold text-white transition hover:bg-white/15"
+                        href="index.html#programs">
+                        <span class="material-symbols-outlined">school</span>
+                        استعراض البرامج
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

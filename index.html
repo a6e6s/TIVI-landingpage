@@ -1071,77 +1071,73 @@
                         <p class="text-white/50 text-sm">يستغرق ملء النموذج دقيقة واحدة فقط</p>
                     </div>
 
-                    <form class="space-y-5" id="registerForm" novalidate>
+                    <form action="thank-you.html" class="space-y-5" id="registerForm" method="get">
                         <!-- Full Name -->
                         <div class="form-field">
                             <span class="form-field-icon material-symbols-outlined">person</span>
-                            <input class="form-input" style="padding-right:3rem;" id="fullName" type="text" placeholder="أدخل اسمك الثلاثي" />
+                            <input class="form-input" style="padding-right:3rem;" id="fullName" name="fullName" type="text" placeholder="أدخل اسمك الكامل" required />
                             <label for="fullName">الاسم الكامل</label>
                         </div>
 
-                        <!-- Email & Phone (side by side) -->
-                        <div class="grid grid-cols-1 gap-4" style="grid-template-columns:1fr 1fr;">
-                            <div class="form-field">
-                                <span class="form-field-icon material-symbols-outlined">mail</span>
-                                <input class="form-input" style="padding-right:3rem;" id="email" type="email" placeholder="example@mail.com" />
-                                <label for="email">البريد الإلكتروني</label>
-                            </div>
+                        <!-- Phone & Email -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="form-field">
                                 <span class="form-field-icon material-symbols-outlined">smartphone</span>
-                                <input class="form-input" style="padding-right:3rem;" id="phone" type="tel" placeholder="05xxxxxxxx" dir="ltr" />
+                                <input class="form-input" style="padding-right:3rem;" id="phone" name="phone" type="tel" placeholder="05xxxxxxxx" dir="ltr" required />
                                 <label for="phone">رقم الجوال</label>
                             </div>
+                            <div class="form-field">
+                                <span class="form-field-icon material-symbols-outlined">mail</span>
+                                <input class="form-input" style="padding-right:3rem;" id="email" name="email" type="email" placeholder="example@mail.com" required />
+                                <label for="email">البريد الإلكتروني</label>
+                            </div>
+                        </div>
+
+                        <!-- City -->
+                        <div class="form-field">
+                            <span class="form-field-icon material-symbols-outlined">location_city</span>
+                            <input class="form-input" style="padding-right:3rem;" id="city" name="city" type="text" placeholder="اكتب مدينتك" required />
+                            <label for="city">المدينة</label>
                         </div>
 
                         <!-- Program select -->
                         <div class="form-field">
                             <span class="form-field-icon material-symbols-outlined">school</span>
-                            <select class="form-input" style="padding-right:3rem; cursor:pointer;" id="program">
+                            <select class="form-input" style="padding-right:3rem; cursor:pointer;" id="program" name="program" required>
                                 <option value="" disabled selected hidden></option>
                                 <option>الأمن السيبراني المتقدم</option>
                                 <option>إدارة المشاريع الإحترافية</option>
                                 <option>تحليل البيانات والذكاء الاصطناعي</option>
                                 <option>القيادة الإدارية</option>
                             </select>
-                            <label for="program">البرنامج المفضل</label>
+                            <label for="program">اختيار البرنامج</label>
                         </div>
 
-                        <!-- Preferred mode -->
-                        <div class="mt-2">
-                            <p class="text-white/60 text-xs font-bold uppercase tracking-wider mb-3 text-right">طريقة التدريب المفضلة</p>
-                            <div class="flex gap-3">
-                                <label class="flex-1 cursor-pointer">
-                                    <input type="radio" name="mode" value="onsite" class="sr-only peer" checked />
-                                    <div class="text-center py-2.5 px-3 rounded-xl border text-white/60 text-sm font-bold transition-all peer-checked:text-amber-400 peer-checked:border-amber-400/60 peer-checked:bg-amber-400/10"
-                                        style="border-color:rgba(255,255,255,0.15);">
-                                        <span class="material-symbols-outlined block mb-1" style="font-size:1.2rem;">corporate_fare</span>
-                                        حضوري
-                                    </div>
-                                </label>
-                                <label class="flex-1 cursor-pointer">
-                                    <input type="radio" name="mode" value="online" class="sr-only peer" />
-                                    <div class="text-center py-2.5 px-3 rounded-xl border text-white/60 text-sm font-bold transition-all peer-checked:text-amber-400 peer-checked:border-amber-400/60 peer-checked:bg-amber-400/10"
-                                        style="border-color:rgba(255,255,255,0.15);">
-                                        <span class="material-symbols-outlined block mb-1" style="font-size:1.2rem;">laptop_mac</span>
-                                        عن بعد
-                                    </div>
-                                </label>
-                                <label class="flex-1 cursor-pointer">
-                                    <input type="radio" name="mode" value="hybrid" class="sr-only peer" />
-                                    <div class="text-center py-2.5 px-3 rounded-xl border text-white/60 text-sm font-bold transition-all peer-checked:text-amber-400 peer-checked:border-amber-400/60 peer-checked:bg-amber-400/10"
-                                        style="border-color:rgba(255,255,255,0.15);">
-                                        <span class="material-symbols-outlined block mb-1" style="font-size:1.2rem;">sync_alt</span>
-                                        هجين
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-
-                        <!-- Message -->
+                        <!-- Experience level -->
                         <div class="form-field">
-                            <span class="form-field-icon material-symbols-outlined" style="top:1.4rem; transform:none;">chat</span>
-                            <textarea class="form-input" style="padding-right:3rem; resize:none;" id="message" placeholder="كيف يمكننا مساعدتك؟" rows="3"></textarea>
-                            <label for="message">الرسالة (اختياري)</label>
+                            <span class="form-field-icon material-symbols-outlined">badge</span>
+                            <select class="form-input" style="padding-right:3rem; cursor:pointer;" id="experienceLevel" name="experienceLevel" required>
+                                <option value="" disabled selected hidden></option>
+                                <option>طالب</option>
+                                <option>حديث تخرج</option>
+                                <option>موظف</option>
+                                <option>مدير</option>
+                                <option>أعمال حرة</option>
+                            </select>
+                            <label for="experienceLevel">مستوى الخبرة</label>
+                        </div>
+
+                        <!-- Course goal -->
+                        <div class="form-field">
+                            <span class="form-field-icon material-symbols-outlined">flag</span>
+                            <select class="form-input" style="padding-right:3rem; cursor:pointer;" id="courseGoal" name="courseGoal" required>
+                                <option value="" disabled selected hidden></option>
+                                <option>ترقية</option>
+                                <option>تغيير وظيفة</option>
+                                <option>شهادة تدريبية</option>
+                                <option>تطوير مهارة</option>
+                            </select>
+                            <label for="courseGoal">هدفك من الدورة</label>
                         </div>
 
                         <!-- Submit -->
@@ -1152,7 +1148,7 @@
                             </span>
                         </button>
 
-                        <p class="text-white/35 text-xs text-center pt-1">بالضغط على إرسال توافق على <a href="#" class="underline hover:text-white/60 transition-colors">شروط الخدمة</a> وسياسة الخصوصية</p>
+                        <p class="text-white/35 text-xs text-center pt-1">بعد التسجيل سيتم تحويلك مباشرة إلى صفحة الشكر لتأكيد استلام طلبك.</p>
                     </form>
                 </div>
             </div>
@@ -1272,15 +1268,7 @@
                     <li><a class="hover:text-white hover:translate-x-[-4px] transition-transform duration-300 inline-block" href="#">اتصل بنا</a></li>
                 </ul>
             </div>
-            <div class="space-y-6">
-                <h5 class="text-white font-bold border-r-2 border-secondary pr-3">البرامج الأكثر طلباً</h5>
-                <ul class="space-y-4 text-slate-300 text-sm">
-                    <li class="hover:text-white transition-colors cursor-pointer">الأمن السيبراني</li>
-                    <li class="hover:text-white transition-colors cursor-pointer">إدارة المشاريع</li>
-                    <li class="hover:text-white transition-colors cursor-pointer">الذكاء الاصطناعي</li>
-                    <li class="hover:text-white transition-colors cursor-pointer">مهارات القيادة</li>
-                </ul>
-            </div>
+
             <div class="space-y-6">
                 <h5 class="text-white font-bold border-r-2 border-secondary pr-3">تواصل معنا</h5>
                 <div class="space-y-4 text-slate-300 text-sm">
@@ -1389,27 +1377,21 @@
                 });
             });
 
-            // ─── Form submit ripple ───
+            // ─── Form submit redirect ───
             const submitBtn = document.getElementById('submitBtn');
             const form = document.getElementById('registerForm');
             if (form && submitBtn) {
                 form.addEventListener('submit', (e) => {
                     e.preventDefault();
                     submitBtn.disabled = true;
-                    const original = submitBtn.innerHTML;
                     submitBtn.innerHTML = `
                         <span class="flex items-center justify-center gap-3">
                             <span class="material-symbols-outlined" style="font-size:1.3rem; animation:spin 1s linear infinite;">progress_activity</span>
                             جارٍ الإرسال…
                         </span>`;
-                    setTimeout(() => {
-                        submitBtn.innerHTML = `
-                            <span class="flex items-center justify-center gap-3">
-                                <span class="material-symbols-outlined" style="font-size:1.3rem; font-variation-settings:'FILL' 1;">check_circle</span>
-                                تم الإرسال بنجاح!
-                            </span>`;
-                        submitBtn.style.background = 'linear-gradient(135deg, #22c55e, #16a34a)';
-                    }, 1800);
+                    window.setTimeout(() => {
+                        window.location.href = 'thank-you.html';
+                    }, 700);
                 });
             }
 
