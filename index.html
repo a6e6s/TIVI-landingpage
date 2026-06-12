@@ -1279,9 +1279,7 @@
 
     <script>
         window.TIVI_CONFIG = Object.assign({
-            apiBaseUrl: ['http:', 'https:'].includes(window.location.protocol)
-                ? `${window.location.origin.replace(/\/$/, '')}/api/v1`
-                : 'http://127.0.0.1:8000/api/v1',
+            apiBaseUrl: 'https://manage.tivi.com.sa/api/v1',
             platformId: 1,
             coursesPerPage: 6,
             featuredOnly: false,
@@ -1290,6 +1288,32 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const runtimeConfig = window.TIVI_CONFIG;
+            const normalizedApiBaseUrl = (() => {
+                const fallbackUrl = 'https://manage.tivi.com.sa/api/v1';
+                const configuredUrl = String(runtimeConfig.apiBaseUrl || '').trim() || fallbackUrl;
+
+                try {
+                    const url = new URL(configuredUrl, window.location.href);
+                    const pathSegments = url.pathname.split('/').filter(Boolean);
+                    const platformSegment = String(runtimeConfig.platformId);
+
+                    if (pathSegments.at(-1) === platformSegment) {
+                        pathSegments.pop();
+                    }
+
+                    if (!(pathSegments.at(-2) === 'api' && pathSegments.at(-1) === 'v1')) {
+                        pathSegments.push('api', 'v1');
+                    }
+
+                    url.pathname = `/${pathSegments.join('/')}`;
+
+                    return url.toString().replace(/\/$/, '');
+                } catch (error) {
+                    return fallbackUrl;
+                }
+            })();
+
+            runtimeConfig.apiBaseUrl = normalizedApiBaseUrl;
             const state = {
                 categories: [],
                 selectedCategorySlug: null,
@@ -1310,7 +1334,7 @@
 
             const apiOrigin = (() => {
                 try {
-                    return new URL(runtimeConfig.apiBaseUrl).origin;
+                    return new URL(normalizedApiBaseUrl).origin;
                 } catch (error) {
                     return window.location.origin;
                 }
@@ -1469,7 +1493,7 @@
             };
 
             const buildApiUrl = (path, params = {}) => {
-                const base = runtimeConfig.apiBaseUrl.replace(/\/$/, '');
+                const base = normalizedApiBaseUrl;
                 const url = new URL(`${base}/${runtimeConfig.platformId}/${path}`);
 
                 Object.entries(params).forEach(([key, value]) => {
